@@ -1,0 +1,33 @@
+picurl = [
+    'http://p3.music.126.net/IIFOoLqw8ScSvbkjnaA8pQ==/109951163129212503.jpg',
+    'http://p4.music.126.net/1PL_6wnKdf7UkZkC99kXyw==/109951163129205865.jpg',
+    'http://p4.music.126.net/gj2_NhJrvpC2RAAt7IZZiQ==/109951163129251105.jpg',
+    'http://p4.music.126.net/X75k0xU-up6amMIzlbyCCA==/109951163129261680.jpg',
+    'http://p3.music.126.net/4edpgcUYVC7bqKQ9eqXlDA==/109951163129204971.jpg',
+    'http://p4.music.126.net/bGR-EiwL6_UQ5e_QWSHdEQ==/109951163129207336.jpg',
+    'http://p3.music.126.net/hO1L92HGf-idX8_sa7rIlw==/109951163129266572.jpg',
+    'http://p3.music.126.net/PBg3HB-itqKIxUWIFRYRuQ==/109951163129208833.jpg',
+    'http://p3.music.126.net/5ykgC4EroQapBiKmj0cGcA==/109951163129258977.jpg',
+    'http://p4.music.126.net/S09ntM5BrbUOn3eOzEJZsQ==/109951163129262773.jpg',
+    'http://p4.music.126.net/ea-X7RcDJT3eNZTUoJhFcw==/109951163129214098.jpg',
+    'http://p3.music.126.net/Yt8sds28HVRBn6VK39ne9A==/109951163129211275.jpg',
+    'http://p3.music.126.net/KxcZqYv6dNST8T-qwR6j_w==/109951163129277111.jpg',
+    'http://p4.music.126.net/NzPRTZTapaoJzK06u05Geg==/109951163129273748.jpg',
+    'http://p3.music.126.net/uBIMkVTIPvAdF3xBZnagDw==/109951163129320036.jpg',
+    'http://p4.music.126.net/-pAT2IYkCp6cLCBRmk-GPA==/109951163129304636.jpg',
+    'http://p4.music.126.net/mwWEUiBUmUm88HiQXhf1XA==/109951163129302292.jpg',
+    'http://p3.music.126.net/M3MKQ7pBmwFjyWE08gNxqg==/109951163129207440.jpg']    
+
+mp3url = [
+        'http://m10.music.126.net/20180316204556/3eba22b28dd246bc9faced2a9f9173d5/ymusic/03ea/d531/2967/384d6b2f492c60919e3a59fd30bcf01f.mp3',
+        'http://m10.music.126.net/20180316204601/143d097b453ea2c0a777e47cf3b25868/ymusic/0d02/2bd7/1f9e/c9915d8ed629b2babd1a6f8d2e4f9ec4.mp3',
+        
+        'http://m10.music.126.net/20180316204648/e6bb8df8202ad78ca761367ed115d988/ymusic/397e/5baa/7ce6/037f86b1e57f2d813933fa2235f8d1ab.mp3',
+        'http://m10.music.126.net/20180316204653/4fc4d8cf0db5ce35c23c4b2c90aa9b59/ymusic/03bc/fc94/6bae/f1fb81d4836f334a1a45b15ce4277caf.mp3']
+
+
+
+
+
+
+	
