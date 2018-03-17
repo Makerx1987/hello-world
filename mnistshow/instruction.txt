@@ -1,3 +1,0 @@
-必须先解压train-images.7z才能正常运行代码。GitHub的25MB限制。（You must first unzip the train-images.7z to run the code. The 25MB limit for GitHub.
-
- ） 
