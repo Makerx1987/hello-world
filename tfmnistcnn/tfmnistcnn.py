@@ -22,14 +22,14 @@ cross_entropy = tf.reduce_mean(
 
 train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 
-for _ in range(1000):
-    batch = mnist.train.next_batch(100)
-    train_step.run(feed_dict={x: batch[0], y_: batch[1]})
-correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+# for _ in range(1000):
+#     batch = mnist.train.next_batch(100)
+#     train_step.run(feed_dict={x: batch[0], y_: batch[1]})
+# correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
 
-accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+# accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
-print(accuracy.eval(feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
+# print(accuracy.eval(feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 
 
 def weight_variable(shape):
@@ -83,9 +83,10 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 # saver = tf.train.Saver()  # defaults to saving all variables
 
 sess.run(tf.global_variables_initializer())
-for i in range(20000):
+for i in range(30000):
     batch = mnist.train.next_batch(50)
     if i % 100 == 0:
+#     if (i<1000 and i%10==0)or(i<10000 and i%100 == 0)or i%1000 == 0:
         train_accuracy = accuracy.eval(feed_dict={
             x: batch[0], y_: batch[1], keep_prob: 1.0})
         print("step %d, training accuracy %g" % (i, train_accuracy))
