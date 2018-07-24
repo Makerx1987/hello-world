@@ -1,1 +1,2 @@
-GitHubÉÏ¾¡Á¿·ÅÔ´Âë£¬²»´æÊı¾İ¡£ËùÒÔÕâÀï²»Ìá¹©train-images.idx3-ubyte£¬Çë´Óhttp://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz ÏÂÔØ£¬²¢½âÑ¹µ½ÄãµÄ´úÂëÄ¿Â¼¡£
+GitHubä¸Šå°½é‡æ”¾æºç ï¼Œä¸å­˜æ•°æ®ã€‚æ‰€ä»¥è¿™é‡Œä¸æä¾›train-images.idx3-ubyteï¼Œ
+è¯·ä»http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz ä¸‹è½½ï¼Œå¹¶è§£å‹åˆ°ä½ çš„ä»£ç ç›®å½•ã€‚
