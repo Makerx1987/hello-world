@@ -1,0 +1,71 @@
+
+* {
+    padding: 0;
+    margin: 0;
+  }
+  ul, li {
+    list-style: none;
+  }
+  body{
+    background-color: rgb(241, 241, 241);
+  }
+  .container {
+    display: flex;
+  }
+  .menu {
+    width: 120px;
+  }
+  .menu li {
+    background-color: rgb(121, 239, 255);
+    margin-bottom: 35px;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px 0;
+  }
+  .box {
+    position: relative;
+    flex: 1;
+    margin-top: 5px;
+    padding: 30px 5px 0 5px;
+  }
+  
+  .tabs {
+    position: absolute;
+    top: 0;
+    left: 5px;
+  }
+  
+  .tabs li {
+    display: block;
+    float: left;
+    line-height: 30px;
+    background-color: rgb(180, 180, 180);
+    padding: 0 10px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .tabs li.active {
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .contents {
+    margin-top: 5px;
+  }
+  
+  .contents li {
+    display: none;
+  }
+  
+  .contents li.active {
+    display: block;
+  }
+  
+  .close {
+    display: inline-block;
+    background-color: rgb(253, 220, 170);
+    width: 25px;
+    height: 100%;
+    margin-right: -10px;
+    text-align: center;
+  }

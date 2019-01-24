@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>关于这个已经爆炸的项目</title>
+  </head>
+  <body>
+    <h1>Hey!</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    <p>项目使用 Node.js <script>document.write(process.versions.node)</script>,</p>
+    <p>Chromium <script>document.write(process.versions.chrome)</script>,</p>
+    <p>and Electron <script>document.write(process.versions.electron)</script>.</p>
+    <p>弃坑原因:Electron没有提供相对位置以及default设置</p>
+    <script>
+      // You can also require other files to run in this process
+      // require('./renderer.js')
+    </script>
+  </body>
+</html>

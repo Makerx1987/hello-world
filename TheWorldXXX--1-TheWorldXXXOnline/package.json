@@ -1,0 +1,25 @@
+{
+  "name": "theworldxxx",
+  "version": "19.0.0",
+  "description": "一个跨平台的electron浏览器？界面准备抄袭世界之窗7和百分浏览器，说不定可以融资融他2个E( • ̀ω•́ )✧",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grdaimap/TheWorldXXX.git"
+  },
+  "keywords": [
+    "electron",
+    "browser",
+    "opensourse",
+    "theworld"
+  ],
+  "author": "grdaimap and who help to build this app",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/grdaimap/TheWorldXXX/issues"
+  },
+  "homepage": "https://github.com/grdaimap/TheWorldXXX#readme"
+}
