@@ -1,0 +1,24 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 人名哈希表 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\cloud\AppData\Local\Temp\RSPDFC1.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/人名哈希表.pdb" /debug /machine:I386 /out:"Debug/人名哈希表.exe" /pdbtype:sept 
+".\Debug\人名哈希表.obj"
+]
+Creating command line "link.exe @C:\Users\cloud\AppData\Local\Temp\RSPDFC1.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+人名哈希表.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
