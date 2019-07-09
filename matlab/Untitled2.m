@@ -1,0 +1,16 @@
+u=zeros(167,15);
+u(:,1)=0:30:5000;
+u(:,2)=inter167(mtlb(:,3),mtlb(:,1));
+u(:,3)=inter167(mtlb(:,3),mtlb(:,2));
+u(:,4)=inter167(mtlb(:,7),mtlb(:,5));
+u(:,5)=inter167(mtlb(:,7),mtlb(:,6));
+u(:,6)=inter167(mtlb(:,11),mtlb(:,9));
+u(:,7)=inter167(mtlb(:,11),mtlb(:,10));
+u(:,8)=inter167(mtlb(:,15),mtlb(:,13));
+u(:,9)=inter167(mtlb(:,15),mtlb(:,14));
+u(:,10)=inter167(mtlb(:,19),mtlb(:,17));
+u(:,11)=inter167(mtlb(:,19),mtlb(:,18));
+u(:,12)=inter167(mtlb(:,23),mtlb(:,21));
+u(:,13)=inter167(mtlb(:,23),mtlb(:,22));
+u(:,14)=inter167(mtlb(:,27),mtlb(:,25));
+u(:,15)=inter167(mtlb(:,27),mtlb(:,26));

@@ -1,0 +1,95 @@
+-- Copyright (C) 1991-2009 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files from any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+
+-- Quartus II generated Memory Initialization File (.mif)
+
+WIDTH=8;
+DEPTH=128;
+
+ADDRESS_RADIX=BIN;
+DATA_RADIX=OCT;
+
+CONTENT BEGIN
+	[00000000..00011111]  :   000;
+	[00100000..00100001]  :   044;
+	00100010  :   377;
+	[00100011..00100100]  :   044;
+	00100101  :   377;
+	[00100110..00100111]  :   044;
+	00101000  :   076;
+	[00101001..00101011]  :   042;
+	00101100  :   076;
+	[00101101..00101110]  :   002;
+	00101111  :   076;
+	00110000  :   034;
+	00110001  :   042;
+	00110010  :   040;
+	00110011  :   054;
+	00110100  :   062;
+	[00110101..00110110]  :   042;
+	00110111  :   034;
+	00111000  :   074;
+	00111001  :   102;
+	00111010  :   002;
+	[00111011..00111100]  :   034;
+	00111101  :   002;
+	00111110  :   102;
+	00111111  :   074;
+	01000000  :   034;
+	[01000001..01000110]  :   042;
+	01000111  :   034;
+	01001000  :   076;
+	[01001001..01001010]  :   042;
+	01001011  :   076;
+	[01001100..01001110]  :   042;
+	01001111  :   034;
+	01010000  :   076;
+	[01010001..01010010]  :   040;
+	01010011  :   074;
+	[01010100..01010110]  :   002;
+	[01010111..01011000]  :   074;
+	01011001  :   102;
+	[01011010..01011011]  :   002;
+	01011100  :   004;
+	01011101  :   030;
+	01011110  :   040;
+	01011111  :   176;
+	01100000  :   000;
+	01100001  :   111;
+	01100010  :   052;
+	01100011  :   034;
+	01100100  :   177;
+	01100101  :   034;
+	01100110  :   052;
+	01100111  :   111;
+	01101000  :   077;
+	01101001  :   003;
+	01101010  :   002;
+	01101011  :   006;
+	01101100  :   004;
+	01101101  :   014;
+	01101110  :   010;
+	01101111  :   030;
+	01110000  :   014;
+	01110001  :   024;
+	01110010  :   044;
+	01110011  :   104;
+	01110100  :   176;
+	[01110101..01110111]  :   004;
+	01111000  :   010;
+	01111001  :   030;
+	01111010  :   050;
+	[01111011..01111110]  :   010;
+	01111111  :   076;
+END;

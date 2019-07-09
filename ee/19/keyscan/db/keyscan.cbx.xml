@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="keyscan">
+		<CBX_INST_ENTRY INSTANCE_NAME="|FINAL|BB:inst|16COUNTER:inst1|lpm_counter:lpm_counter_component" CBX_FILE_NAME="cntr_ohj.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|FINAL|BB:inst|VOICE:inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_ik21.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|FINAL|FLASH:inst3|ROM3:inst6|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_uu21.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|FINAL|ROM2:inst15|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_1l21.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|FINAL|ROM:inst5|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_fj21.tdf"/>
+	</PROJECT>
+</LOG_ROOT>
