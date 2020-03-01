@@ -1,0 +1,43 @@
+PUBLIC TISHI1,TISHI2,DA ;提示语DA公用
+EXTRN ZC:NEAR ;外部模块zc
+EXTRN ZX:NEAR ;外部模块zx
+DATA SEGMENT COMMON 
+DA DB 4 DUP(?) ;处理好的数据
+TISHI1 DB 'PLEASE INPUT A DECIMIL NUMBER :','$' 
+TISHI2 DB 'THE RESULT IS :','$' 
+RECEIVE DB 5 DUP(?) 
+DATA ENDS
+
+CODE SEGMENT PUBLIC 
+ASSUME CS:CODE,DS:DATA 
+START: MOV AX,DATA 
+    MOV DS,AX 
+    CALL ZC 
+    MOV SI,OFFSET RECEIVE 
+    MOV AH,1 ;键盘输入回显
+SSS: INT 21H ;键盘输入直到空格
+    MOV [SI],AL 
+    CMP AL,20H 
+    JZ Q 
+    INC SI 
+    JMP SSS 
+Q:  LEA SI,RECEIVE ;为空格时，取首支
+    MOV BX,10 
+    MOV AX,0 
+    MOV AL,[SI] ;第一位数赋给
+    MOV CX,3 
+    SUB AL,30H ;转为数字
+DTOH: MUL BX ;乘10转为16进制数值
+    ADD AL,[SI+1] 
+    ADC AH,0 
+    SUB AL,30H 
+    SBB AH,0 
+    INC SI 
+LOOP DTOH 
+    CALL ZX 
+    MOV AH,7 
+    INT 21H 
+    MOV AH,4CH 
+    INT 21H 
+CODE ENDS 
+END START

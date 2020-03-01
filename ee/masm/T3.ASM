@@ -1,0 +1,67 @@
+DATASG		SEGMENT	PARA		'DATA'
+	THREE		DB	3
+	MONIN		DB	3,4 DUP(?)
+	ALFMON	DB  '???','$'
+	MONTAB	DB	 'JAN','FEB','MAR','APR','MAY','JUN'
+				DB	 'JUL','AUG','SEP', 'OCT','NOV','DEC'
+	DATASG		ENDS
+	CODESG	SEGMENT	PARA	'CODE'
+				ASSUME	CS:CODESG,DS:DATASG
+	MAIN		PROC	FAR
+				PUSH	DS
+				SUB		AX,	AX
+				PUSH	AX
+MOV	AX,	DATASG
+				MOV	DS,	AX
+				MOV	ES,	AX
+				CALL	INPUT		
+				CALL	LOCATE
+				CALL	DISPLAY
+				RET
+	MAIN		ENDP
+
+	INPUT		PROC	NEAR		; 键盘输入并将ASCⅡ码转换二进制数的子程序
+				PUSH	DX
+				MOV	AH,	0AH		;	  键盘输入月份数
+				LEA		DX,	 MONIN
+				INT		21H
+				MOV	AH,	MONIN+2 ;  将月份数字的ASCⅡ码取入AH和AL
+				MOV	AL,	MONIN+3
+				XOR	AX,	3030H		; 	将ASCⅡ码转换为BCD码
+				CMP	AH,	00
+				JZ		RETURN
+				SUB		AH,	AH
+				ADD	AL,	10
+	RETURN:	POP		DX
+				RET
+	INPUT		ENDP
+
+	LOCATE		PROC	NEAR	;	将月份数字转换为英文缩写字母的子程序
+				PUSH	SI
+				PUSH	DI
+				PUSH	CX
+				LEA		SI,	MONTAB
+				DEC	AL
+				MUL	THREE
+				ADD	SI,	AX
+				MOV	CX,	03
+				CLD
+				LEA		DI,	ALFMON
+				REP		MOVSB
+				POP		CX
+				POP		DI
+				POP		SI
+				RET		
+	LOCATE	ENDP
+
+	DISPLAY	PROC	NEAR	;		屏幕显示子程序
+				PUSH	DX
+				LEA		DX,	ALFMON
+				MOV	AH,	09
+				INT		21H
+				POP		DX
+				RET
+	DISPLAY	ENDP
+
+	CODESG	ENDS
+				END	MAIN

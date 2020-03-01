@@ -1,0 +1,345 @@
+Simulator report for 6
+Tue Oct 15 15:07:32 2019
+Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 1.0 ms       ;
+; Simulation Netlist Size     ; 140 nodes    ;
+; Simulation Coverage         ;      70.71 % ;
+; Total Number of Transitions ; 4424925      ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Stratix II   ;
++-----------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                      ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Option                                                                                     ; Setting    ; Default Value ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Simulation mode                                                                            ; Functional ; Timing        ;
+; Start time                                                                                 ; 0 ns       ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF       ;               ;
+; Vector input source                                                                        ; voter7.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
+; Check outputs                                                                              ; Off        ; Off           ;
+; Report simulation coverage                                                                 ; On         ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
+; Display missing 1-value coverage report                                                    ; On         ; On            ;
+; Display missing 0-value coverage report                                                    ; On         ; On            ;
+; Detect setup and hold time violations                                                      ; Off        ; Off           ;
+; Detect glitches                                                                            ; Off        ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
+; Generate Signal Activity File                                                              ; Off        ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off        ; Off           ;
+; Group bus channels in simulation results                                                   ; Off        ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On         ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto       ; Auto          ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      70.71 % ;
+; Total nodes checked                                 ; 140          ;
+; Total output ports checked                          ; 140          ;
+; Total output ports with complete 1/0-value coverage ; 99           ;
+; Total output ports with no 1/0-value coverage       ; 41           ;
+; Total output ports with no 1-value coverage         ; 41           ;
+; Total output ports with no 0-value coverage         ; 41           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++----------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                    ;
++----------------------+----------------------+------------------+
+; Node Name            ; Output Port Name     ; Output Port Type ;
++----------------------+----------------------+------------------+
+; |voter7|sum~0        ; |voter7|sum~0        ; out              ;
+; |voter7|sum~1        ; |voter7|sum~1        ; out              ;
+; |voter7|sum~3        ; |voter7|sum~3        ; out              ;
+; |voter7|sum~4        ; |voter7|sum~4        ; out              ;
+; |voter7|sum~6        ; |voter7|sum~6        ; out              ;
+; |voter7|sum~7        ; |voter7|sum~7        ; out              ;
+; |voter7|sum~8        ; |voter7|sum~8        ; out              ;
+; |voter7|sum~10       ; |voter7|sum~10       ; out              ;
+; |voter7|sum~11       ; |voter7|sum~11       ; out              ;
+; |voter7|sum~12       ; |voter7|sum~12       ; out              ;
+; |voter7|sum~13       ; |voter7|sum~13       ; out              ;
+; |voter7|sum~16       ; |voter7|sum~16       ; out              ;
+; |voter7|sum~17       ; |voter7|sum~17       ; out              ;
+; |voter7|sum~18       ; |voter7|sum~18       ; out              ;
+; |voter7|sum~19       ; |voter7|sum~19       ; out              ;
+; |voter7|sum~23       ; |voter7|sum~23       ; out              ;
+; |voter7|sum~24       ; |voter7|sum~24       ; out              ;
+; |voter7|sum~25       ; |voter7|sum~25       ; out              ;
+; |voter7|sum~26       ; |voter7|sum~26       ; out              ;
+; |voter7|sum~31       ; |voter7|sum~31       ; out              ;
+; |voter7|sum~32       ; |voter7|sum~32       ; out              ;
+; |voter7|sum~33       ; |voter7|sum~33       ; out              ;
+; |voter7|sum~34       ; |voter7|sum~34       ; out              ;
+; |voter7|sum[4]       ; |voter7|sum[4]       ; out              ;
+; |voter7|sum[3]       ; |voter7|sum[3]       ; out              ;
+; |voter7|sum[2]       ; |voter7|sum[2]       ; out              ;
+; |voter7|sum[1]       ; |voter7|sum[1]       ; out              ;
+; |voter7|sum[0]       ; |voter7|sum[0]       ; out              ;
+; |voter7|always0~0    ; |voter7|always0~0    ; out0             ;
+; |voter7|always0~1    ; |voter7|always0~1    ; out0             ;
+; |voter7|pass~0       ; |voter7|pass~0       ; out              ;
+; |voter7|pass         ; |voter7|pass         ; pin_out          ;
+; |voter7|vote[0]      ; |voter7|vote[0]      ; out              ;
+; |voter7|vote[1]      ; |voter7|vote[1]      ; out              ;
+; |voter7|vote[2]      ; |voter7|vote[2]      ; out              ;
+; |voter7|vote[3]      ; |voter7|vote[3]      ; out              ;
+; |voter7|vote[4]      ; |voter7|vote[4]      ; out              ;
+; |voter7|vote[5]      ; |voter7|vote[5]      ; out              ;
+; |voter7|vote[6]      ; |voter7|vote[6]      ; out              ;
+; |voter7|vote[7]      ; |voter7|vote[7]      ; out              ;
+; |voter7|vote[8]      ; |voter7|vote[8]      ; out              ;
+; |voter7|sel          ; |voter7|sel          ; out              ;
+; |voter7|LessThan0~0  ; |voter7|LessThan0~0  ; out0             ;
+; |voter7|LessThan0~1  ; |voter7|LessThan0~1  ; out0             ;
+; |voter7|LessThan0~2  ; |voter7|LessThan0~2  ; out0             ;
+; |voter7|LessThan0~3  ; |voter7|LessThan0~3  ; out0             ;
+; |voter7|LessThan0~4  ; |voter7|LessThan0~4  ; out0             ;
+; |voter7|LessThan0~5  ; |voter7|LessThan0~5  ; out0             ;
+; |voter7|LessThan0~6  ; |voter7|LessThan0~6  ; out0             ;
+; |voter7|LessThan0~7  ; |voter7|LessThan0~7  ; out0             ;
+; |voter7|LessThan0~8  ; |voter7|LessThan0~8  ; out0             ;
+; |voter7|LessThan0~9  ; |voter7|LessThan0~9  ; out0             ;
+; |voter7|LessThan0~10 ; |voter7|LessThan0~10 ; out0             ;
+; |voter7|LessThan0~11 ; |voter7|LessThan0~11 ; out0             ;
+; |voter7|LessThan0~12 ; |voter7|LessThan0~12 ; out0             ;
+; |voter7|LessThan0~13 ; |voter7|LessThan0~13 ; out0             ;
+; |voter7|LessThan1~0  ; |voter7|LessThan1~0  ; out0             ;
+; |voter7|LessThan1~1  ; |voter7|LessThan1~1  ; out0             ;
+; |voter7|LessThan1~2  ; |voter7|LessThan1~2  ; out0             ;
+; |voter7|LessThan1~3  ; |voter7|LessThan1~3  ; out0             ;
+; |voter7|LessThan1~4  ; |voter7|LessThan1~4  ; out0             ;
+; |voter7|LessThan1~5  ; |voter7|LessThan1~5  ; out0             ;
+; |voter7|LessThan1~6  ; |voter7|LessThan1~6  ; out0             ;
+; |voter7|LessThan1~7  ; |voter7|LessThan1~7  ; out0             ;
+; |voter7|LessThan1~8  ; |voter7|LessThan1~8  ; out0             ;
+; |voter7|LessThan1~9  ; |voter7|LessThan1~9  ; out0             ;
+; |voter7|LessThan1~10 ; |voter7|LessThan1~10 ; out0             ;
+; |voter7|LessThan1~11 ; |voter7|LessThan1~11 ; out0             ;
+; |voter7|Add1~0       ; |voter7|Add1~0       ; out0             ;
+; |voter7|Add2~0       ; |voter7|Add2~0       ; out0             ;
+; |voter7|Add2~1       ; |voter7|Add2~1       ; out0             ;
+; |voter7|Add2~2       ; |voter7|Add2~2       ; out0             ;
+; |voter7|Add3~0       ; |voter7|Add3~0       ; out0             ;
+; |voter7|Add3~1       ; |voter7|Add3~1       ; out0             ;
+; |voter7|Add3~2       ; |voter7|Add3~2       ; out0             ;
+; |voter7|Add3~3       ; |voter7|Add3~3       ; out0             ;
+; |voter7|Add3~4       ; |voter7|Add3~4       ; out0             ;
+; |voter7|Add4~0       ; |voter7|Add4~0       ; out0             ;
+; |voter7|Add4~1       ; |voter7|Add4~1       ; out0             ;
+; |voter7|Add4~2       ; |voter7|Add4~2       ; out0             ;
+; |voter7|Add4~3       ; |voter7|Add4~3       ; out0             ;
+; |voter7|Add4~4       ; |voter7|Add4~4       ; out0             ;
+; |voter7|Add5~0       ; |voter7|Add5~0       ; out0             ;
+; |voter7|Add5~1       ; |voter7|Add5~1       ; out0             ;
+; |voter7|Add5~2       ; |voter7|Add5~2       ; out0             ;
+; |voter7|Add5~3       ; |voter7|Add5~3       ; out0             ;
+; |voter7|Add5~4       ; |voter7|Add5~4       ; out0             ;
+; |voter7|Add6~0       ; |voter7|Add6~0       ; out0             ;
+; |voter7|Add6~1       ; |voter7|Add6~1       ; out0             ;
+; |voter7|Add6~2       ; |voter7|Add6~2       ; out0             ;
+; |voter7|Add6~3       ; |voter7|Add6~3       ; out0             ;
+; |voter7|Add6~4       ; |voter7|Add6~4       ; out0             ;
+; |voter7|Add7~0       ; |voter7|Add7~0       ; out0             ;
+; |voter7|Add7~1       ; |voter7|Add7~1       ; out0             ;
+; |voter7|Add7~2       ; |voter7|Add7~2       ; out0             ;
+; |voter7|Add7~3       ; |voter7|Add7~3       ; out0             ;
+; |voter7|Add7~4       ; |voter7|Add7~4       ; out0             ;
+; |voter7|Add7~5       ; |voter7|Add7~5       ; out0             ;
+; |voter7|Add7~6       ; |voter7|Add7~6       ; out0             ;
++----------------------+----------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++-------------------------------------------------------+
+; Missing 1-Value Coverage                              ;
++-----------------+------------------+------------------+
+; Node Name       ; Output Port Name ; Output Port Type ;
++-----------------+------------------+------------------+
+; |voter7|sum~2   ; |voter7|sum~2    ; out              ;
+; |voter7|sum~5   ; |voter7|sum~5    ; out              ;
+; |voter7|sum~9   ; |voter7|sum~9    ; out              ;
+; |voter7|sum~14  ; |voter7|sum~14   ; out              ;
+; |voter7|sum~15  ; |voter7|sum~15   ; out              ;
+; |voter7|sum~20  ; |voter7|sum~20   ; out              ;
+; |voter7|sum~21  ; |voter7|sum~21   ; out              ;
+; |voter7|sum~22  ; |voter7|sum~22   ; out              ;
+; |voter7|sum~27  ; |voter7|sum~27   ; out              ;
+; |voter7|sum~28  ; |voter7|sum~28   ; out              ;
+; |voter7|sum~29  ; |voter7|sum~29   ; out              ;
+; |voter7|sum~30  ; |voter7|sum~30   ; out              ;
+; |voter7|sum[8]  ; |voter7|sum[8]   ; out              ;
+; |voter7|sum[7]  ; |voter7|sum[7]   ; out              ;
+; |voter7|sum[6]  ; |voter7|sum[6]   ; out              ;
+; |voter7|sum[5]  ; |voter7|sum[5]   ; out              ;
+; |voter7|Add1~1  ; |voter7|Add1~1   ; out0             ;
+; |voter7|Add2~3  ; |voter7|Add2~3   ; out0             ;
+; |voter7|Add3~5  ; |voter7|Add3~5   ; out0             ;
+; |voter7|Add4~5  ; |voter7|Add4~5   ; out0             ;
+; |voter7|Add4~6  ; |voter7|Add4~6   ; out0             ;
+; |voter7|Add4~7  ; |voter7|Add4~7   ; out0             ;
+; |voter7|Add5~5  ; |voter7|Add5~5   ; out0             ;
+; |voter7|Add5~6  ; |voter7|Add5~6   ; out0             ;
+; |voter7|Add5~7  ; |voter7|Add5~7   ; out0             ;
+; |voter7|Add5~8  ; |voter7|Add5~8   ; out0             ;
+; |voter7|Add5~9  ; |voter7|Add5~9   ; out0             ;
+; |voter7|Add6~5  ; |voter7|Add6~5   ; out0             ;
+; |voter7|Add6~6  ; |voter7|Add6~6   ; out0             ;
+; |voter7|Add6~7  ; |voter7|Add6~7   ; out0             ;
+; |voter7|Add6~8  ; |voter7|Add6~8   ; out0             ;
+; |voter7|Add6~9  ; |voter7|Add6~9   ; out0             ;
+; |voter7|Add6~10 ; |voter7|Add6~10  ; out0             ;
+; |voter7|Add6~11 ; |voter7|Add6~11  ; out0             ;
+; |voter7|Add7~7  ; |voter7|Add7~7   ; out0             ;
+; |voter7|Add7~8  ; |voter7|Add7~8   ; out0             ;
+; |voter7|Add7~9  ; |voter7|Add7~9   ; out0             ;
+; |voter7|Add7~10 ; |voter7|Add7~10  ; out0             ;
+; |voter7|Add7~11 ; |voter7|Add7~11  ; out0             ;
+; |voter7|Add7~12 ; |voter7|Add7~12  ; out0             ;
+; |voter7|Add7~13 ; |voter7|Add7~13  ; out0             ;
++-----------------+------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++-------------------------------------------------------+
+; Missing 0-Value Coverage                              ;
++-----------------+------------------+------------------+
+; Node Name       ; Output Port Name ; Output Port Type ;
++-----------------+------------------+------------------+
+; |voter7|sum~2   ; |voter7|sum~2    ; out              ;
+; |voter7|sum~5   ; |voter7|sum~5    ; out              ;
+; |voter7|sum~9   ; |voter7|sum~9    ; out              ;
+; |voter7|sum~14  ; |voter7|sum~14   ; out              ;
+; |voter7|sum~15  ; |voter7|sum~15   ; out              ;
+; |voter7|sum~20  ; |voter7|sum~20   ; out              ;
+; |voter7|sum~21  ; |voter7|sum~21   ; out              ;
+; |voter7|sum~22  ; |voter7|sum~22   ; out              ;
+; |voter7|sum~27  ; |voter7|sum~27   ; out              ;
+; |voter7|sum~28  ; |voter7|sum~28   ; out              ;
+; |voter7|sum~29  ; |voter7|sum~29   ; out              ;
+; |voter7|sum~30  ; |voter7|sum~30   ; out              ;
+; |voter7|sum[8]  ; |voter7|sum[8]   ; out              ;
+; |voter7|sum[7]  ; |voter7|sum[7]   ; out              ;
+; |voter7|sum[6]  ; |voter7|sum[6]   ; out              ;
+; |voter7|sum[5]  ; |voter7|sum[5]   ; out              ;
+; |voter7|Add1~1  ; |voter7|Add1~1   ; out0             ;
+; |voter7|Add2~3  ; |voter7|Add2~3   ; out0             ;
+; |voter7|Add3~5  ; |voter7|Add3~5   ; out0             ;
+; |voter7|Add4~5  ; |voter7|Add4~5   ; out0             ;
+; |voter7|Add4~6  ; |voter7|Add4~6   ; out0             ;
+; |voter7|Add4~7  ; |voter7|Add4~7   ; out0             ;
+; |voter7|Add5~5  ; |voter7|Add5~5   ; out0             ;
+; |voter7|Add5~6  ; |voter7|Add5~6   ; out0             ;
+; |voter7|Add5~7  ; |voter7|Add5~7   ; out0             ;
+; |voter7|Add5~8  ; |voter7|Add5~8   ; out0             ;
+; |voter7|Add5~9  ; |voter7|Add5~9   ; out0             ;
+; |voter7|Add6~5  ; |voter7|Add6~5   ; out0             ;
+; |voter7|Add6~6  ; |voter7|Add6~6   ; out0             ;
+; |voter7|Add6~7  ; |voter7|Add6~7   ; out0             ;
+; |voter7|Add6~8  ; |voter7|Add6~8   ; out0             ;
+; |voter7|Add6~9  ; |voter7|Add6~9   ; out0             ;
+; |voter7|Add6~10 ; |voter7|Add6~10  ; out0             ;
+; |voter7|Add6~11 ; |voter7|Add6~11  ; out0             ;
+; |voter7|Add7~7  ; |voter7|Add7~7   ; out0             ;
+; |voter7|Add7~8  ; |voter7|Add7~8   ; out0             ;
+; |voter7|Add7~9  ; |voter7|Add7~9   ; out0             ;
+; |voter7|Add7~10 ; |voter7|Add7~10  ; out0             ;
+; |voter7|Add7~11 ; |voter7|Add7~11  ; out0             ;
+; |voter7|Add7~12 ; |voter7|Add7~12  ; out0             ;
+; |voter7|Add7~13 ; |voter7|Add7~13  ; out0             ;
++-----------------+------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.0 Build 132 02/25/2009 SJ Web Edition
+    Info: Processing started: Tue Oct 15 15:07:28 2019
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off 6 -c 6
+Info: Using vector source file "D:/6/voter7.vwf"
+Info: Overwriting simulation input file with simulation results
+    Info: A backup of voter7.vwf called 6.sim_ori.vwf has been created in the db folder
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      70.71 %
+Info: Number of transitions in simulation is 4424925
+Info: Vector file voter7.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 113 megabytes
+    Info: Processing ended: Tue Oct 15 15:07:32 2019
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
+
+

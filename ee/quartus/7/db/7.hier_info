@@ -1,0 +1,45 @@
+|mulplus1
+sum[0] <= ShiftRight0.DB_MAX_OUTPUT_PORT_TYPE
+sum[1] <= Add2.DB_MAX_OUTPUT_PORT_TYPE
+sum[2] <= Add2.DB_MAX_OUTPUT_PORT_TYPE
+sum[3] <= Add2.DB_MAX_OUTPUT_PORT_TYPE
+sum[4] <= Add2.DB_MAX_OUTPUT_PORT_TYPE
+sum[5] <= Add2.DB_MAX_OUTPUT_PORT_TYPE
+sum[6] <= Add2.DB_MAX_OUTPUT_PORT_TYPE
+sum[7] <= Add2.DB_MAX_OUTPUT_PORT_TYPE
+sum[8] <= Add2.DB_MAX_OUTPUT_PORT_TYPE
+sum[9] <= Add2.DB_MAX_OUTPUT_PORT_TYPE
+a0[0] => ShiftRight0.IN18
+a0[1] => ShiftRight0.IN17
+a0[2] => ShiftRight0.IN16
+a0[3] => ShiftRight0.IN15
+a0[4] => ShiftRight0.IN14
+a0[5] => ShiftRight0.IN13
+a0[6] => ShiftRight0.IN12
+a0[7] => ShiftRight0.IN11
+a1[0] => ShiftRight0.IN19
+a1[1] => Add0.IN0
+a1[2] => Add0.IN1
+a1[3] => Add0.IN2
+a1[4] => Add0.IN3
+a1[5] => Add0.IN4
+a1[6] => Add0.IN5
+a1[7] => Add0.IN6
+a2[0] => Add1.IN8
+a2[1] => Add1.IN7
+a2[2] => Add1.IN6
+a2[3] => Add1.IN5
+a2[4] => Add1.IN4
+a2[5] => Add1.IN3
+a2[6] => Add1.IN2
+a2[7] => Add1.IN1
+a3[0] => Add1.IN16
+a3[1] => Add1.IN15
+a3[2] => Add1.IN14
+a3[3] => Add1.IN13
+a3[4] => Add1.IN12
+a3[5] => Add1.IN11
+a3[6] => Add1.IN10
+a3[7] => Add1.IN9
+
+

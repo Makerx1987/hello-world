@@ -1,0 +1,145 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/13/19 14:19:49
+                                                             Page     1-1
+
+
+ 0000				DATA    SEGMENT 
+ 0000  50 75 73 68 20 61 6E	MESS    DB 'Push any key to stop!',0dH,0aH,'$' 
+       79 20 6B 65 79 20 74	
+       6F 20 73 74 6F 70 21	
+       0D 0A 24			
+ 0018  020C 024C 0294 02BA	TABLE   DW  524,588,660,698,784,880,988,1048,11
+				76,1320,0 
+       0310 0370 03DC 0418	
+       0498 0528 0000		
+ 002E  31 31 32 31 34 33 3B	TABLEL  DB  31H,31H,32H,31H,34H,33H,3BH 
+ 0035  31 31 32 31 35 34 3B	         DB  31H,31H,32H,31H,35H,34H,3BH 
+ 003C  31 31 38 36 34 33 32	         DB  31H,31H,38H,36H,34H,33H,32H,3BH 
+       3B			
+ 0044  36 36 36 34 35 34 3B	         DB  36H,36H,36H,34H,35H,34H,3BH,0AAH 
+       AA			
+ 004C				DATA    ENDS 
+ 0000				STACK   SEGMENT  PARA  STACK  'STACK' 
+ 0000  0100[			STA      DB  256 DUP(?) 
+	    ??			
+			 ]	
+				
+ 0100				STACK   ENDS 
+ 0000				CODE    SEGMENT 
+				          ASSUME  CS: CODE, DS: DATA, SS: STACK
+				, ES: DATA 
+ 0000				START    PROC  FAR 
+ 0000  1E			          PUSH  DS 
+ 0001  33 C0			          XOR  AX,  AX 
+ 0003  50			          PUSH  AX 
+ 0004  B8 ---- R		          MOV  AX,  DATA 
+ 0007  8E D8			          MOV  DS,  AX 
+ 0009  8E C0			          MOV  ES,  AX 
+ 000B  B4 09			          MOV  AH,  09H 
+ 000D  8D 16 0000 R		          LEA  DX,  MESS 
+ 0011  CD 21			          INT  21H 
+ 0013  8D 36 002E R		KK:       LEA  SI,  TABLEL 
+				 
+ 0017  B4 06			SING:     MOV  AH,  06H 
+ 0019  B2 FF			          MOV  DL,  0FFH 
+ 001B  CD 21			          INT  21H 
+ 001D  75 42			          JNE  FINISH 
+ 001F  8A 04			          MOV  AL,  [SI] 
+ 0021  3C 3B			          CMP  AL,  3BH 
+ 0023  75 06			          JNE  DDD 
+ 0025  E8 0062 R		          CALL  DELAY 
+ 0028  EB 34 90			          JMP  QQ 
+ 002B  3C AA			DDD:     CMP  AL,  0AAH 
+ 002D  74 E4			          JE  KK 
+ 002F  2C 31			          SUB  AL,  31H 
+ 0031  D0 E0			          SHL  AL,  01H 
+ 0033  8A D8			          MOV  BL,  AL 
+ 0035  B8 0000			          MOV  AX,  0000H 
+ 0038  BA 0012			          MOV  DX,  12H 
+ 003B  B7 00			          MOV  BH,  00H 
+Microsoft (R) Macro Assembler Version 5.00                  11/13/19 14:19:49
+                                                             Page     1-2
+
+
+ 003D  F7 B7 0018 R		        DIV  WORD  PTR  [TABLE+BX] 
+ 0041  8B D8			        MOV  BX,  AX 
+ 0043  B0 B6			        MOV  AL,  10110110B 
+ 0045  E6 43			        OUT  43H,  AL 
+ 0047  8B C3			        MOV  AX,  BX 
+ 0049  E6 42			        OUT  42H,  AL 
+ 004B  8A C4			        MOV  AL,  AH 
+ 004D  E6 42			        OUT  42H,  AL 
+ 004F  E4 61			        IN  AL,  61H 
+ 0051  0C 03			        OR  AL,  03H 
+ 0053  E6 61			        OUT  61H,  AL 
+ 0055  E8 0062 R		        CALL  DELAY 
+ 0058  E4 61			        IN  AL,  61H 
+ 005A  24 FC			        AND  AL,  0FCH 
+ 005C  E6 61			        OUT  61H,  AL 
+ 005E  46			QQ:     INC  SI 
+ 005F  EB B6			        JMP  SING 
+ 0061  CB			        FINISH:   RET 
+ 0062				        START   ENDP           
+				 
+ 0062				DELAY  PROC  NEAR      ;    延时子程序 
+ 0062  51			        PUSH  CX 
+ 0063  50			        PUSH  AX 
+ 0064  B8 0100			        MOV  AX,  100H   ;    大循环次数 
+ 0067  B9 0FFF			        X1:    MOV  CX,  0FFFH  ; 小循环次数 
+ 006A  49			        X2:    DEC  CX 
+ 006B  75 FD			        JNZ  X2 
+ 006D  48			        DEC  AX 
+ 006E  75 F7			        JNZ  X1 
+ 0070  58			        POP  AX 
+ 0071  59			        POP  CX 
+ 0072  C3			        RET 
+ 0073				        DELAY  ENDP  
+ 0073				CODE   ENDS 
+				END  START 
+Microsoft (R) Macro Assembler Version 5.00                  11/13/19 14:19:49
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	0073	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	004C	PARA	NONE	
+STACK  . . . . . . . . . . . . .  	0100	PARA	STACK	'STACK'
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+DDD  . . . . . . . . . . . . . .  	L NEAR	002B	CODE
+DELAY  . . . . . . . . . . . . .  	N PROC	0062	CODE	Length = 0011
+
+FINISH . . . . . . . . . . . . .  	L NEAR	0061	CODE
+
+KK . . . . . . . . . . . . . . .  	L NEAR	0013	CODE
+
+MESS . . . . . . . . . . . . . .  	L BYTE	0000	DATA
+
+QQ . . . . . . . . . . . . . . .  	L NEAR	005E	CODE
+
+SING . . . . . . . . . . . . . .  	L NEAR	0017	CODE
+STA  . . . . . . . . . . . . . .  	L BYTE	0000	STACK	Length = 0100
+START  . . . . . . . . . . . . .  	F PROC	0000	CODE	Length = 0062
+
+TABLE  . . . . . . . . . . . . .  	L WORD	0018	DATA
+TABLEL . . . . . . . . . . . . .  	L BYTE	002E	DATA
+
+X1 . . . . . . . . . . . . . . .  	L NEAR	0067	CODE
+X2 . . . . . . . . . . . . . . .  	L NEAR	006A	CODE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  PP		
+
+
+     77 Source  Lines
+     77 Total   Lines
+     18 Symbols
+
+  51036 + 465508 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

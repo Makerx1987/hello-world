@@ -1,0 +1,1 @@
+代码是main.c或者LCD1602.c,仿真文件是DEBUG.omf或者LCD1602.hex。

@@ -1,0 +1,16 @@
+module mulplus3(sum,a0,a1,a2,a3);
+output[9:0] sum;
+input[7:0] a0,a1,a2,a3;
+reg[9:0] sum;
+reg[9:0] temp1;
+reg[9:0] temp2;
+always @(a0 or a1 or a2)           
+begin
+temp1=a0>>2+a1>>1;
+temp2=a2+a3<<1;
+end  
+always @(a0 or a1 or a2)           
+begin
+sum=temp1+temp2;
+end 
+endmodule

@@ -1,0 +1,330 @@
+Classic Timing Analyzer report for 7
+Wed Nov 27 15:34:09 2019
+Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Parallel Compilation
+  5. tpd
+  6. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                    ;
++------------------------------+-------+---------------+-------------+-------+--------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time ; From  ; To     ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+-------------+-------+--------+------------+----------+--------------+
+; Worst-case tpd               ; N/A   ; None          ; 14.909 ns   ; a1[7] ; sum[9] ; --         ; --       ; 0            ;
+; Total number of failed paths ;       ;               ;             ;       ;        ;            ;          ; 0            ;
++------------------------------+-------+---------------+-------------+-------+--------+------------+----------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                           ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                              ; Setting            ; From ; To ; Entity Name ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                         ; EP2S15F484C3       ;      ;    ;             ;
+; Timing Models                                                       ; Final              ;      ;    ;             ;
+; Default hold multicycle                                             ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                           ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                              ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                      ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                    ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                               ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                             ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                    ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                       ; Off                ;      ;    ;             ;
+; Number of source nodes to report per destination node               ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                               ; 10                 ;      ;    ;             ;
+; Number of paths to report                                           ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                        ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                              ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                          ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                        ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis      ; Off                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                          ; Near End           ;      ;    ;             ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 2      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; tpd                                                                                                                              ;
++-----------------------------------------+-----------------------------------------------------+-----------------+-------+--------+
+; Slack                                   ; Required P2P Time                                   ; Actual P2P Time ; From  ; To     ;
++-----------------------------------------+-----------------------------------------------------+-----------------+-------+--------+
+; N/A                                     ; None                                                ; 14.909 ns       ; a1[7] ; sum[9] ;
+; N/A                                     ; None                                                ; 14.813 ns       ; a1[2] ; sum[9] ;
+; N/A                                     ; None                                                ; 14.602 ns       ; a1[6] ; sum[9] ;
+; N/A                                     ; None                                                ; 14.560 ns       ; a1[5] ; sum[9] ;
+; N/A                                     ; None                                                ; 14.538 ns       ; a1[7] ; sum[5] ;
+; N/A                                     ; None                                                ; 14.442 ns       ; a1[2] ; sum[5] ;
+; N/A                                     ; None                                                ; 14.279 ns       ; a1[3] ; sum[9] ;
+; N/A                                     ; None                                                ; 14.231 ns       ; a1[6] ; sum[5] ;
+; N/A                                     ; None                                                ; 14.218 ns       ; a1[1] ; sum[9] ;
+; N/A                                     ; None                                                ; 14.189 ns       ; a1[5] ; sum[5] ;
+; N/A                                     ; None                                                ; 14.187 ns       ; a1[4] ; sum[9] ;
+; N/A                                     ; None                                                ; 14.023 ns       ; a1[7] ; sum[7] ;
+; N/A                                     ; None                                                ; 13.927 ns       ; a1[2] ; sum[7] ;
+; N/A                                     ; None                                                ; 13.908 ns       ; a1[3] ; sum[5] ;
+; N/A                                     ; None                                                ; 13.847 ns       ; a1[1] ; sum[5] ;
+; N/A                                     ; None                                                ; 13.816 ns       ; a1[4] ; sum[5] ;
+; N/A                                     ; None                                                ; 13.716 ns       ; a1[6] ; sum[7] ;
+; N/A                                     ; None                                                ; 13.674 ns       ; a1[5] ; sum[7] ;
+; N/A                                     ; None                                                ; 13.473 ns       ; a1[7] ; sum[6] ;
+; N/A                                     ; None                                                ; 13.393 ns       ; a1[3] ; sum[7] ;
+; N/A                                     ; None                                                ; 13.377 ns       ; a1[2] ; sum[6] ;
+; N/A                                     ; None                                                ; 13.360 ns       ; a1[7] ; sum[2] ;
+; N/A                                     ; None                                                ; 13.358 ns       ; a1[7] ; sum[4] ;
+; N/A                                     ; None                                                ; 13.332 ns       ; a1[1] ; sum[7] ;
+; N/A                                     ; None                                                ; 13.301 ns       ; a1[4] ; sum[7] ;
+; N/A                                     ; None                                                ; 13.264 ns       ; a1[2] ; sum[2] ;
+; N/A                                     ; None                                                ; 13.262 ns       ; a1[2] ; sum[4] ;
+; N/A                                     ; None                                                ; 13.166 ns       ; a1[6] ; sum[6] ;
+; N/A                                     ; None                                                ; 13.164 ns       ; a1[7] ; sum[8] ;
+; N/A                                     ; None                                                ; 13.124 ns       ; a1[5] ; sum[6] ;
+; N/A                                     ; None                                                ; 13.068 ns       ; a1[2] ; sum[8] ;
+; N/A                                     ; None                                                ; 13.053 ns       ; a1[6] ; sum[2] ;
+; N/A                                     ; None                                                ; 13.051 ns       ; a1[6] ; sum[4] ;
+; N/A                                     ; None                                                ; 13.011 ns       ; a1[5] ; sum[2] ;
+; N/A                                     ; None                                                ; 13.009 ns       ; a1[5] ; sum[4] ;
+; N/A                                     ; None                                                ; 12.925 ns       ; a1[7] ; sum[3] ;
+; N/A                                     ; None                                                ; 12.857 ns       ; a1[6] ; sum[8] ;
+; N/A                                     ; None                                                ; 12.843 ns       ; a1[3] ; sum[6] ;
+; N/A                                     ; None                                                ; 12.829 ns       ; a1[2] ; sum[3] ;
+; N/A                                     ; None                                                ; 12.815 ns       ; a1[5] ; sum[8] ;
+; N/A                                     ; None                                                ; 12.782 ns       ; a1[1] ; sum[6] ;
+; N/A                                     ; None                                                ; 12.764 ns       ; a1[7] ; sum[1] ;
+; N/A                                     ; None                                                ; 12.751 ns       ; a1[4] ; sum[6] ;
+; N/A                                     ; None                                                ; 12.730 ns       ; a1[3] ; sum[2] ;
+; N/A                                     ; None                                                ; 12.728 ns       ; a1[3] ; sum[4] ;
+; N/A                                     ; None                                                ; 12.669 ns       ; a1[1] ; sum[2] ;
+; N/A                                     ; None                                                ; 12.668 ns       ; a1[2] ; sum[1] ;
+; N/A                                     ; None                                                ; 12.667 ns       ; a1[1] ; sum[4] ;
+; N/A                                     ; None                                                ; 12.638 ns       ; a1[4] ; sum[2] ;
+; N/A                                     ; None                                                ; 12.636 ns       ; a1[4] ; sum[4] ;
+; N/A                                     ; None                                                ; 12.618 ns       ; a1[6] ; sum[3] ;
+; N/A                                     ; None                                                ; 12.576 ns       ; a1[5] ; sum[3] ;
+; N/A                                     ; None                                                ; 12.571 ns       ; a0[7] ; sum[9] ;
+; N/A                                     ; None                                                ; 12.534 ns       ; a1[3] ; sum[8] ;
+; N/A                                     ; None                                                ; 12.473 ns       ; a1[1] ; sum[8] ;
+; N/A                                     ; None                                                ; 12.457 ns       ; a1[6] ; sum[1] ;
+; N/A                                     ; None                                                ; 12.442 ns       ; a1[4] ; sum[8] ;
+; N/A                                     ; None                                                ; 12.433 ns       ; a1[0] ; sum[9] ;
+; N/A                                     ; None                                                ; 12.415 ns       ; a1[5] ; sum[1] ;
+; N/A                                     ; None                                                ; 12.295 ns       ; a1[3] ; sum[3] ;
+; N/A                                     ; None                                                ; 12.234 ns       ; a1[1] ; sum[3] ;
+; N/A                                     ; None                                                ; 12.203 ns       ; a1[4] ; sum[3] ;
+; N/A                                     ; None                                                ; 12.200 ns       ; a0[7] ; sum[5] ;
+; N/A                                     ; None                                                ; 12.134 ns       ; a1[3] ; sum[1] ;
+; N/A                                     ; None                                                ; 12.073 ns       ; a1[1] ; sum[1] ;
+; N/A                                     ; None                                                ; 12.062 ns       ; a1[0] ; sum[5] ;
+; N/A                                     ; None                                                ; 12.042 ns       ; a1[4] ; sum[1] ;
+; N/A                                     ; None                                                ; 11.823 ns       ; a0[5] ; sum[9] ;
+; N/A                                     ; None                                                ; 11.817 ns       ; a0[6] ; sum[9] ;
+; N/A                                     ; None                                                ; 11.787 ns       ; a0[3] ; sum[9] ;
+; N/A                                     ; None                                                ; 11.685 ns       ; a0[7] ; sum[7] ;
+; N/A                                     ; None                                                ; 11.547 ns       ; a1[0] ; sum[7] ;
+; N/A                                     ; None                                                ; 11.533 ns       ; a0[4] ; sum[9] ;
+; N/A                                     ; None                                                ; 11.452 ns       ; a0[5] ; sum[5] ;
+; N/A                                     ; None                                                ; 11.446 ns       ; a0[6] ; sum[5] ;
+; N/A                                     ; None                                                ; 11.416 ns       ; a0[3] ; sum[5] ;
+; N/A                                     ; None                                                ; 11.162 ns       ; a0[4] ; sum[5] ;
+; N/A                                     ; None                                                ; 11.135 ns       ; a0[7] ; sum[6] ;
+; N/A                                     ; None                                                ; 11.022 ns       ; a0[7] ; sum[2] ;
+; N/A                                     ; None                                                ; 11.020 ns       ; a0[7] ; sum[4] ;
+; N/A                                     ; None                                                ; 10.997 ns       ; a1[0] ; sum[6] ;
+; N/A                                     ; None                                                ; 10.937 ns       ; a0[5] ; sum[7] ;
+; N/A                                     ; None                                                ; 10.931 ns       ; a0[6] ; sum[7] ;
+; N/A                                     ; None                                                ; 10.915 ns       ; a3[7] ; sum[9] ;
+; N/A                                     ; None                                                ; 10.901 ns       ; a0[3] ; sum[7] ;
+; N/A                                     ; None                                                ; 10.884 ns       ; a1[0] ; sum[2] ;
+; N/A                                     ; None                                                ; 10.882 ns       ; a1[0] ; sum[4] ;
+; N/A                                     ; None                                                ; 10.826 ns       ; a0[7] ; sum[8] ;
+; N/A                                     ; None                                                ; 10.754 ns       ; a3[0] ; sum[9] ;
+; N/A                                     ; None                                                ; 10.688 ns       ; a1[0] ; sum[8] ;
+; N/A                                     ; None                                                ; 10.647 ns       ; a0[4] ; sum[7] ;
+; N/A                                     ; None                                                ; 10.587 ns       ; a0[7] ; sum[3] ;
+; N/A                                     ; None                                                ; 10.569 ns       ; a3[5] ; sum[9] ;
+; N/A                                     ; None                                                ; 10.561 ns       ; a2[4] ; sum[9] ;
+; N/A                                     ; None                                                ; 10.539 ns       ; a0[2] ; sum[9] ;
+; N/A                                     ; None                                                ; 10.450 ns       ; a3[4] ; sum[9] ;
+; N/A                                     ; None                                                ; 10.449 ns       ; a1[0] ; sum[3] ;
+; N/A                                     ; None                                                ; 10.426 ns       ; a0[7] ; sum[1] ;
+; N/A                                     ; None                                                ; 10.401 ns       ; a2[0] ; sum[9] ;
+; N/A                                     ; None                                                ; 10.387 ns       ; a0[5] ; sum[6] ;
+; N/A                                     ; None                                                ; 10.383 ns       ; a3[0] ; sum[5] ;
+; N/A                                     ; None                                                ; 10.381 ns       ; a0[6] ; sum[6] ;
+; N/A                                     ; None                                                ; 10.351 ns       ; a0[3] ; sum[6] ;
+; N/A                                     ; None                                                ; 10.288 ns       ; a1[0] ; sum[1] ;
+; N/A                                     ; None                                                ; 10.272 ns       ; a0[5] ; sum[4] ;
+; N/A                                     ; None                                                ; 10.268 ns       ; a0[6] ; sum[2] ;
+; N/A                                     ; None                                                ; 10.266 ns       ; a0[6] ; sum[4] ;
+; N/A                                     ; None                                                ; 10.238 ns       ; a0[3] ; sum[2] ;
+; N/A                                     ; None                                                ; 10.236 ns       ; a0[3] ; sum[4] ;
+; N/A                                     ; None                                                ; 10.221 ns       ; a2[7] ; sum[9] ;
+; N/A                                     ; None                                                ; 10.210 ns       ; a0[5] ; sum[2] ;
+; N/A                                     ; None                                                ; 10.168 ns       ; a0[2] ; sum[5] ;
+; N/A                                     ; None                                                ; 10.168 ns       ; a2[4] ; sum[5] ;
+; N/A                                     ; None                                                ; 10.097 ns       ; a0[4] ; sum[6] ;
+; N/A                                     ; None                                                ; 10.078 ns       ; a0[5] ; sum[8] ;
+; N/A                                     ; None                                                ; 10.072 ns       ; a0[6] ; sum[8] ;
+; N/A                                     ; None                                                ; 10.059 ns       ; a3[1] ; sum[9] ;
+; N/A                                     ; None                                                ; 10.044 ns       ; a3[4] ; sum[5] ;
+; N/A                                     ; None                                                ; 10.042 ns       ; a0[3] ; sum[8] ;
+; N/A                                     ; None                                                ; 10.033 ns       ; a1[7] ; sum[0] ;
+; N/A                                     ; None                                                ; 10.030 ns       ; a2[0] ; sum[5] ;
+; N/A                                     ; None                                                ; 10.023 ns       ; a2[3] ; sum[9] ;
+; N/A                                     ; None                                                ; 9.999 ns        ; a2[1] ; sum[9] ;
+; N/A                                     ; None                                                ; 9.987 ns        ; a3[6] ; sum[9] ;
+; N/A                                     ; None                                                ; 9.982 ns        ; a0[4] ; sum[4] ;
+; N/A                                     ; None                                                ; 9.973 ns        ; a3[3] ; sum[9] ;
+; N/A                                     ; None                                                ; 9.937 ns        ; a1[2] ; sum[0] ;
+; N/A                                     ; None                                                ; 9.920 ns        ; a0[4] ; sum[2] ;
+; N/A                                     ; None                                                ; 9.899 ns        ; a3[2] ; sum[9] ;
+; N/A                                     ; None                                                ; 9.876 ns        ; a2[6] ; sum[9] ;
+; N/A                                     ; None                                                ; 9.868 ns        ; a3[0] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.861 ns        ; a0[5] ; sum[3] ;
+; N/A                                     ; None                                                ; 9.833 ns        ; a0[6] ; sum[3] ;
+; N/A                                     ; None                                                ; 9.809 ns        ; a2[5] ; sum[9] ;
+; N/A                                     ; None                                                ; 9.803 ns        ; a0[3] ; sum[3] ;
+; N/A                                     ; None                                                ; 9.800 ns        ; a2[2] ; sum[9] ;
+; N/A                                     ; None                                                ; 9.788 ns        ; a0[4] ; sum[8] ;
+; N/A                                     ; None                                                ; 9.726 ns        ; a1[6] ; sum[0] ;
+; N/A                                     ; None                                                ; 9.692 ns        ; a3[5] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.688 ns        ; a3[1] ; sum[5] ;
+; N/A                                     ; None                                                ; 9.684 ns        ; a1[5] ; sum[0] ;
+; N/A                                     ; None                                                ; 9.675 ns        ; a2[4] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.672 ns        ; a2[3] ; sum[5] ;
+; N/A                                     ; None                                                ; 9.672 ns        ; a0[6] ; sum[1] ;
+; N/A                                     ; None                                                ; 9.653 ns        ; a0[2] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.642 ns        ; a0[3] ; sum[1] ;
+; N/A                                     ; None                                                ; 9.628 ns        ; a2[1] ; sum[5] ;
+; N/A                                     ; None                                                ; 9.611 ns        ; a3[3] ; sum[5] ;
+; N/A                                     ; None                                                ; 9.571 ns        ; a0[4] ; sum[3] ;
+; N/A                                     ; None                                                ; 9.564 ns        ; a3[4] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.528 ns        ; a3[2] ; sum[5] ;
+; N/A                                     ; None                                                ; 9.515 ns        ; a2[0] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.454 ns        ; a0[5] ; sum[1] ;
+; N/A                                     ; None                                                ; 9.429 ns        ; a2[2] ; sum[5] ;
+; N/A                                     ; None                                                ; 9.403 ns        ; a1[3] ; sum[0] ;
+; N/A                                     ; None                                                ; 9.342 ns        ; a1[1] ; sum[0] ;
+; N/A                                     ; None                                                ; 9.324 ns        ; a0[4] ; sum[1] ;
+; N/A                                     ; None                                                ; 9.318 ns        ; a3[0] ; sum[6] ;
+; N/A                                     ; None                                                ; 9.311 ns        ; a1[4] ; sum[0] ;
+; N/A                                     ; None                                                ; 9.219 ns        ; a0[7] ; sum[0] ;
+; N/A                                     ; None                                                ; 9.205 ns        ; a3[0] ; sum[2] ;
+; N/A                                     ; None                                                ; 9.203 ns        ; a3[0] ; sum[4] ;
+; N/A                                     ; None                                                ; 9.173 ns        ; a3[1] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.169 ns        ; a3[7] ; sum[8] ;
+; N/A                                     ; None                                                ; 9.137 ns        ; a2[3] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.134 ns        ; a2[4] ; sum[6] ;
+; N/A                                     ; None                                                ; 9.113 ns        ; a2[1] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.111 ns        ; a3[5] ; sum[6] ;
+; N/A                                     ; None                                                ; 9.103 ns        ; a0[2] ; sum[6] ;
+; N/A                                     ; None                                                ; 9.087 ns        ; a3[3] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.080 ns        ; a0[4] ; sum[0] ;
+; N/A                                     ; None                                                ; 9.066 ns        ; a3[6] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.028 ns        ; a3[4] ; sum[6] ;
+; N/A                                     ; None                                                ; 9.013 ns        ; a3[2] ; sum[7] ;
+; N/A                                     ; None                                                ; 9.009 ns        ; a3[0] ; sum[8] ;
+; N/A                                     ; None                                                ; 8.990 ns        ; a0[2] ; sum[2] ;
+; N/A                                     ; None                                                ; 8.988 ns        ; a0[2] ; sum[4] ;
+; N/A                                     ; None                                                ; 8.976 ns        ; a2[6] ; sum[7] ;
+; N/A                                     ; None                                                ; 8.965 ns        ; a2[0] ; sum[6] ;
+; N/A                                     ; None                                                ; 8.937 ns        ; a2[5] ; sum[7] ;
+; N/A                                     ; None                                                ; 8.914 ns        ; a2[2] ; sum[7] ;
+; N/A                                     ; None                                                ; 8.852 ns        ; a2[0] ; sum[2] ;
+; N/A                                     ; None                                                ; 8.850 ns        ; a2[0] ; sum[4] ;
+; N/A                                     ; None                                                ; 8.824 ns        ; a3[5] ; sum[8] ;
+; N/A                                     ; None                                                ; 8.816 ns        ; a2[4] ; sum[8] ;
+; N/A                                     ; None                                                ; 8.794 ns        ; a0[2] ; sum[8] ;
+; N/A                                     ; None                                                ; 8.770 ns        ; a3[0] ; sum[3] ;
+; N/A                                     ; None                                                ; 8.739 ns        ; a0[5] ; sum[0] ;
+; N/A                                     ; None                                                ; 8.705 ns        ; a3[4] ; sum[8] ;
+; N/A                                     ; None                                                ; 8.656 ns        ; a2[0] ; sum[8] ;
+; N/A                                     ; None                                                ; 8.623 ns        ; a3[1] ; sum[6] ;
+; N/A                                     ; None                                                ; 8.604 ns        ; a3[0] ; sum[1] ;
+; N/A                                     ; None                                                ; 8.587 ns        ; a2[3] ; sum[6] ;
+; N/A                                     ; None                                                ; 8.565 ns        ; a0[3] ; sum[0] ;
+; N/A                                     ; None                                                ; 8.563 ns        ; a2[1] ; sum[6] ;
+; N/A                                     ; None                                                ; 8.555 ns        ; a0[2] ; sum[3] ;
+; N/A                                     ; None                                                ; 8.537 ns        ; a3[3] ; sum[6] ;
+; N/A                                     ; None                                                ; 8.508 ns        ; a3[1] ; sum[4] ;
+; N/A                                     ; None                                                ; 8.502 ns        ; a1[0] ; sum[0] ;
+; N/A                                     ; None                                                ; 8.465 ns        ; a2[7] ; sum[8] ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                 ;       ;        ;
++-----------------------------------------+-----------------------------------------------------+-----------------+-------+--------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.0 Build 132 02/25/2009 SJ Web Edition
+    Info: Processing started: Wed Nov 27 15:34:09 2019
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off 7 -c 7 --timing_analysis_only
+Info: Longest tpd from source pin "a1[7]" to destination pin "sum[9]" is 14.909 ns
+    Info: 1: + IC(0.000 ns) + CELL(0.799 ns) = 0.799 ns; Loc. = PIN_W9; Fanout = 2; PIN Node = 'a1[7]'
+    Info: 2: + IC(4.675 ns) + CELL(0.619 ns) = 6.093 ns; Loc. = LCCOMB_X26_Y26_N26; Fanout = 1; COMB Node = 'Add0~21'
+    Info: 3: + IC(0.294 ns) + CELL(0.272 ns) = 6.659 ns; Loc. = LCCOMB_X26_Y26_N4; Fanout = 4; COMB Node = 'ShiftRight0~2'
+    Info: 4: + IC(0.350 ns) + CELL(0.346 ns) = 7.355 ns; Loc. = LCCOMB_X27_Y26_N20; Fanout = 3; COMB Node = 'ShiftRight0~5'
+    Info: 5: + IC(0.569 ns) + CELL(0.346 ns) = 8.270 ns; Loc. = LCCOMB_X25_Y26_N20; Fanout = 1; COMB Node = 'ShiftRight0~7'
+    Info: 6: + IC(0.512 ns) + CELL(0.357 ns) = 9.139 ns; Loc. = LCCOMB_X27_Y26_N10; Fanout = 2; COMB Node = 'ShiftRight0~8'
+    Info: 7: + IC(0.459 ns) + CELL(0.172 ns) = 9.770 ns; Loc. = LCCOMB_X25_Y26_N0; Fanout = 2; COMB Node = 'Add2~3'
+    Info: 8: + IC(0.000 ns) + CELL(0.172 ns) = 9.942 ns; Loc. = LCCOMB_X25_Y26_N2; Fanout = 2; COMB Node = 'Add2~6'
+    Info: 9: + IC(0.000 ns) + CELL(0.035 ns) = 9.977 ns; Loc. = LCCOMB_X25_Y26_N4; Fanout = 2; COMB Node = 'Add2~10'
+    Info: 10: + IC(0.000 ns) + CELL(0.035 ns) = 10.012 ns; Loc. = LCCOMB_X25_Y26_N6; Fanout = 2; COMB Node = 'Add2~14'
+    Info: 11: + IC(0.000 ns) + CELL(0.035 ns) = 10.047 ns; Loc. = LCCOMB_X25_Y26_N8; Fanout = 2; COMB Node = 'Add2~18'
+    Info: 12: + IC(0.000 ns) + CELL(0.035 ns) = 10.082 ns; Loc. = LCCOMB_X25_Y26_N10; Fanout = 2; COMB Node = 'Add2~22'
+    Info: 13: + IC(0.000 ns) + CELL(0.035 ns) = 10.117 ns; Loc. = LCCOMB_X25_Y26_N12; Fanout = 2; COMB Node = 'Add2~26'
+    Info: 14: + IC(0.000 ns) + CELL(0.096 ns) = 10.213 ns; Loc. = LCCOMB_X25_Y26_N14; Fanout = 1; COMB Node = 'Add2~30'
+    Info: 15: + IC(0.000 ns) + CELL(0.125 ns) = 10.338 ns; Loc. = LCCOMB_X25_Y26_N16; Fanout = 1; COMB Node = 'Add2~33'
+    Info: 16: + IC(2.629 ns) + CELL(1.942 ns) = 14.909 ns; Loc. = PIN_U10; Fanout = 0; PIN Node = 'sum[9]'
+    Info: Total cell delay = 5.421 ns ( 36.36 % )
+    Info: Total interconnect delay = 9.488 ns ( 63.64 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 186 megabytes
+    Info: Processing ended: Wed Nov 27 15:34:09 2019
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
+
+

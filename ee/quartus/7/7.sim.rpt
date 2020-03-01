@@ -1,0 +1,374 @@
+Simulator report for 7
+Wed Nov 27 14:49:35 2019
+Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 1.0 us       ;
+; Simulation Netlist Size     ; 187 nodes    ;
+; Simulation Coverage         ;      86.10 % ;
+; Total Number of Transitions ; 1206         ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Stratix II   ;
++-----------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                      ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Option                                                                                     ; Setting    ; Default Value ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Simulation mode                                                                            ; Functional ; Timing        ;
+; Start time                                                                                 ; 0 ns       ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF       ;               ;
+; Vector input source                                                                        ; exe1.vwf   ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
+; Check outputs                                                                              ; Off        ; Off           ;
+; Report simulation coverage                                                                 ; On         ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
+; Display missing 1-value coverage report                                                    ; On         ; On            ;
+; Display missing 0-value coverage report                                                    ; On         ; On            ;
+; Detect setup and hold time violations                                                      ; Off        ; Off           ;
+; Detect glitches                                                                            ; Off        ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
+; Generate Signal Activity File                                                              ; Off        ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off        ; Off           ;
+; Group bus channels in simulation results                                                   ; Off        ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On         ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto       ; Auto          ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      86.10 % ;
+; Total nodes checked                                 ; 187          ;
+; Total output ports checked                          ; 187          ;
+; Total output ports with complete 1/0-value coverage ; 161          ;
+; Total output ports with no 1/0-value coverage       ; 23           ;
+; Total output ports with no 1-value coverage         ; 23           ;
+; Total output ports with no 0-value coverage         ; 26           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++----------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                      ;
++-------------------------------+-------------------------------+------------------+
+; Node Name                     ; Output Port Name              ; Output Port Type ;
++-------------------------------+-------------------------------+------------------+
+; |mul4x4x|reset~0              ; |mul4x4x|reset~0              ; out0             ;
+; |mul4x4x|reset~1              ; |mul4x4x|reset~1              ; out0             ;
+; |mul4x4x|reset~2              ; |mul4x4x|reset~2              ; out0             ;
+; |mul4x4x|reset~4              ; |mul4x4x|reset~4              ; out0             ;
+; |mul4x4x|reset                ; |mul4x4x|reset                ; out0             ;
+; |mul4x4x|c[0]                 ; |mul4x4x|c[0]                 ; out0             ;
+; |mul4x4x|c[1]                 ; |mul4x4x|c[1]                 ; out0             ;
+; |mul4x4x|c[2]                 ; |mul4x4x|c[2]                 ; out0             ;
+; |mul4x4x|c[3]                 ; |mul4x4x|c[3]                 ; out0             ;
+; |mul4x4x|c[4]                 ; |mul4x4x|c[4]                 ; out0             ;
+; |mul4x4x|c[5]                 ; |mul4x4x|c[5]                 ; out0             ;
+; |mul4x4x|c[6]                 ; |mul4x4x|c[6]                 ; out0             ;
+; |mul4x4x|c[7]                 ; |mul4x4x|c[7]                 ; out0             ;
+; |mul4x4x|c[8]                 ; |mul4x4x|c[8]                 ; out0             ;
+; |mul4x4x|c[9]                 ; |mul4x4x|c[9]                 ; out0             ;
+; |mul4x4x|c[10]                ; |mul4x4x|c[10]                ; out0             ;
+; |mul4x4x|c[11]                ; |mul4x4x|c[11]                ; out0             ;
+; |mul4x4x|c[12]                ; |mul4x4x|c[12]                ; out0             ;
+; |mul4x4x|c[13]                ; |mul4x4x|c[13]                ; out0             ;
+; |mul4x4x|c[14]                ; |mul4x4x|c[14]                ; out0             ;
+; |mul4x4x|y~0                  ; |mul4x4x|y~0                  ; out0             ;
+; |mul4x4x|y~1                  ; |mul4x4x|y~1                  ; out0             ;
+; |mul4x4x|y~2                  ; |mul4x4x|y~2                  ; out0             ;
+; |mul4x4x|y~3                  ; |mul4x4x|y~3                  ; out0             ;
+; |mul4x4x|y~4                  ; |mul4x4x|y~4                  ; out0             ;
+; |mul4x4x|y~5                  ; |mul4x4x|y~5                  ; out0             ;
+; |mul4x4x|y~6                  ; |mul4x4x|y~6                  ; out0             ;
+; |mul4x4x|a[0]                 ; |mul4x4x|a[0]                 ; out              ;
+; |mul4x4x|a[1]                 ; |mul4x4x|a[1]                 ; out              ;
+; |mul4x4x|a[2]                 ; |mul4x4x|a[2]                 ; out              ;
+; |mul4x4x|a[3]                 ; |mul4x4x|a[3]                 ; out              ;
+; |mul4x4x|b[0]                 ; |mul4x4x|b[0]                 ; out              ;
+; |mul4x4x|b[1]                 ; |mul4x4x|b[1]                 ; out              ;
+; |mul4x4x|b[2]                 ; |mul4x4x|b[2]                 ; out              ;
+; |mul4x4x|y[0]                 ; |mul4x4x|y[0]                 ; pin_out          ;
+; |mul4x4x|y[1]                 ; |mul4x4x|y[1]                 ; pin_out          ;
+; |mul4x4x|y[2]                 ; |mul4x4x|y[2]                 ; pin_out          ;
+; |mul4x4x|y[3]                 ; |mul4x4x|y[3]                 ; pin_out          ;
+; |mul4x4x|y[4]                 ; |mul4x4x|y[4]                 ; pin_out          ;
+; |mul4x4x|y[5]                 ; |mul4x4x|y[5]                 ; pin_out          ;
+; |mul4x4x|y[6]                 ; |mul4x4x|y[6]                 ; pin_out          ;
+; |mul4x4x|fulladder:add11|s~0  ; |mul4x4x|fulladder:add11|s~0  ; out0             ;
+; |mul4x4x|fulladder:add11|s~1  ; |mul4x4x|fulladder:add11|s~1  ; out0             ;
+; |mul4x4x|fulladder:add11|s~4  ; |mul4x4x|fulladder:add11|s~4  ; out0             ;
+; |mul4x4x|fulladder:add11|s~5  ; |mul4x4x|fulladder:add11|s~5  ; out0             ;
+; |mul4x4x|fulladder:add11|s~6  ; |mul4x4x|fulladder:add11|s~6  ; out0             ;
+; |mul4x4x|fulladder:add11|s~7  ; |mul4x4x|fulladder:add11|s~7  ; out0             ;
+; |mul4x4x|fulladder:add11|s~10 ; |mul4x4x|fulladder:add11|s~10 ; out0             ;
+; |mul4x4x|fulladder:add11|co~0 ; |mul4x4x|fulladder:add11|co~0 ; out0             ;
+; |mul4x4x|fulladder:add11|co~1 ; |mul4x4x|fulladder:add11|co~1 ; out0             ;
+; |mul4x4x|fulladder:add11|co~2 ; |mul4x4x|fulladder:add11|co~2 ; out0             ;
+; |mul4x4x|fulladder:add11|co~3 ; |mul4x4x|fulladder:add11|co~3 ; out0             ;
+; |mul4x4x|fulladder:add10|s~0  ; |mul4x4x|fulladder:add10|s~0  ; out0             ;
+; |mul4x4x|fulladder:add10|s~1  ; |mul4x4x|fulladder:add10|s~1  ; out0             ;
+; |mul4x4x|fulladder:add10|s~2  ; |mul4x4x|fulladder:add10|s~2  ; out0             ;
+; |mul4x4x|fulladder:add10|s~3  ; |mul4x4x|fulladder:add10|s~3  ; out0             ;
+; |mul4x4x|fulladder:add10|s~4  ; |mul4x4x|fulladder:add10|s~4  ; out0             ;
+; |mul4x4x|fulladder:add10|s~5  ; |mul4x4x|fulladder:add10|s~5  ; out0             ;
+; |mul4x4x|fulladder:add10|s~7  ; |mul4x4x|fulladder:add10|s~7  ; out0             ;
+; |mul4x4x|fulladder:add10|s~8  ; |mul4x4x|fulladder:add10|s~8  ; out0             ;
+; |mul4x4x|fulladder:add10|s~9  ; |mul4x4x|fulladder:add10|s~9  ; out0             ;
+; |mul4x4x|fulladder:add10|s~10 ; |mul4x4x|fulladder:add10|s~10 ; out0             ;
+; |mul4x4x|fulladder:add10|co~0 ; |mul4x4x|fulladder:add10|co~0 ; out0             ;
+; |mul4x4x|fulladder:add10|co~1 ; |mul4x4x|fulladder:add10|co~1 ; out0             ;
+; |mul4x4x|fulladder:add10|co~2 ; |mul4x4x|fulladder:add10|co~2 ; out0             ;
+; |mul4x4x|fulladder:add10|co~3 ; |mul4x4x|fulladder:add10|co~3 ; out0             ;
+; |mul4x4x|fulladder:add9|s~0   ; |mul4x4x|fulladder:add9|s~0   ; out0             ;
+; |mul4x4x|fulladder:add9|s~8   ; |mul4x4x|fulladder:add9|s~8   ; out0             ;
+; |mul4x4x|fulladder:add9|s~10  ; |mul4x4x|fulladder:add9|s~10  ; out0             ;
+; |mul4x4x|fulladder:add9|co~1  ; |mul4x4x|fulladder:add9|co~1  ; out0             ;
+; |mul4x4x|fulladder:add9|co~3  ; |mul4x4x|fulladder:add9|co~3  ; out0             ;
+; |mul4x4x|fulladder:add8|s~0   ; |mul4x4x|fulladder:add8|s~0   ; out0             ;
+; |mul4x4x|fulladder:add8|s~1   ; |mul4x4x|fulladder:add8|s~1   ; out0             ;
+; |mul4x4x|fulladder:add8|s~2   ; |mul4x4x|fulladder:add8|s~2   ; out0             ;
+; |mul4x4x|fulladder:add8|s~4   ; |mul4x4x|fulladder:add8|s~4   ; out0             ;
+; |mul4x4x|fulladder:add8|s~5   ; |mul4x4x|fulladder:add8|s~5   ; out0             ;
+; |mul4x4x|fulladder:add8|s~6   ; |mul4x4x|fulladder:add8|s~6   ; out0             ;
+; |mul4x4x|fulladder:add8|s~7   ; |mul4x4x|fulladder:add8|s~7   ; out0             ;
+; |mul4x4x|fulladder:add8|s~10  ; |mul4x4x|fulladder:add8|s~10  ; out0             ;
+; |mul4x4x|fulladder:add8|co~0  ; |mul4x4x|fulladder:add8|co~0  ; out0             ;
+; |mul4x4x|fulladder:add8|co~1  ; |mul4x4x|fulladder:add8|co~1  ; out0             ;
+; |mul4x4x|fulladder:add8|co~2  ; |mul4x4x|fulladder:add8|co~2  ; out0             ;
+; |mul4x4x|fulladder:add8|co~3  ; |mul4x4x|fulladder:add8|co~3  ; out0             ;
+; |mul4x4x|fulladder:add7|s~0   ; |mul4x4x|fulladder:add7|s~0   ; out0             ;
+; |mul4x4x|fulladder:add7|s~1   ; |mul4x4x|fulladder:add7|s~1   ; out0             ;
+; |mul4x4x|fulladder:add7|s~2   ; |mul4x4x|fulladder:add7|s~2   ; out0             ;
+; |mul4x4x|fulladder:add7|s~4   ; |mul4x4x|fulladder:add7|s~4   ; out0             ;
+; |mul4x4x|fulladder:add7|s~5   ; |mul4x4x|fulladder:add7|s~5   ; out0             ;
+; |mul4x4x|fulladder:add7|s~6   ; |mul4x4x|fulladder:add7|s~6   ; out0             ;
+; |mul4x4x|fulladder:add7|s~7   ; |mul4x4x|fulladder:add7|s~7   ; out0             ;
+; |mul4x4x|fulladder:add7|s~10  ; |mul4x4x|fulladder:add7|s~10  ; out0             ;
+; |mul4x4x|fulladder:add7|co~0  ; |mul4x4x|fulladder:add7|co~0  ; out0             ;
+; |mul4x4x|fulladder:add7|co~1  ; |mul4x4x|fulladder:add7|co~1  ; out0             ;
+; |mul4x4x|fulladder:add7|co~2  ; |mul4x4x|fulladder:add7|co~2  ; out0             ;
+; |mul4x4x|fulladder:add7|co~3  ; |mul4x4x|fulladder:add7|co~3  ; out0             ;
+; |mul4x4x|fulladder:add6|s~0   ; |mul4x4x|fulladder:add6|s~0   ; out0             ;
+; |mul4x4x|fulladder:add6|s~1   ; |mul4x4x|fulladder:add6|s~1   ; out0             ;
+; |mul4x4x|fulladder:add6|s~2   ; |mul4x4x|fulladder:add6|s~2   ; out0             ;
+; |mul4x4x|fulladder:add6|s~4   ; |mul4x4x|fulladder:add6|s~4   ; out0             ;
+; |mul4x4x|fulladder:add6|s~5   ; |mul4x4x|fulladder:add6|s~5   ; out0             ;
+; |mul4x4x|fulladder:add6|s~6   ; |mul4x4x|fulladder:add6|s~6   ; out0             ;
+; |mul4x4x|fulladder:add6|s~7   ; |mul4x4x|fulladder:add6|s~7   ; out0             ;
+; |mul4x4x|fulladder:add6|s~10  ; |mul4x4x|fulladder:add6|s~10  ; out0             ;
+; |mul4x4x|fulladder:add6|co~0  ; |mul4x4x|fulladder:add6|co~0  ; out0             ;
+; |mul4x4x|fulladder:add6|co~1  ; |mul4x4x|fulladder:add6|co~1  ; out0             ;
+; |mul4x4x|fulladder:add6|co~2  ; |mul4x4x|fulladder:add6|co~2  ; out0             ;
+; |mul4x4x|fulladder:add6|co~3  ; |mul4x4x|fulladder:add6|co~3  ; out0             ;
+; |mul4x4x|fulladder:add5|s~0   ; |mul4x4x|fulladder:add5|s~0   ; out0             ;
+; |mul4x4x|fulladder:add5|s~1   ; |mul4x4x|fulladder:add5|s~1   ; out0             ;
+; |mul4x4x|fulladder:add5|s~2   ; |mul4x4x|fulladder:add5|s~2   ; out0             ;
+; |mul4x4x|fulladder:add5|s~4   ; |mul4x4x|fulladder:add5|s~4   ; out0             ;
+; |mul4x4x|fulladder:add5|s~5   ; |mul4x4x|fulladder:add5|s~5   ; out0             ;
+; |mul4x4x|fulladder:add5|s~7   ; |mul4x4x|fulladder:add5|s~7   ; out0             ;
+; |mul4x4x|fulladder:add5|s~8   ; |mul4x4x|fulladder:add5|s~8   ; out0             ;
+; |mul4x4x|fulladder:add5|s~9   ; |mul4x4x|fulladder:add5|s~9   ; out0             ;
+; |mul4x4x|fulladder:add5|s~10  ; |mul4x4x|fulladder:add5|s~10  ; out0             ;
+; |mul4x4x|fulladder:add5|co~0  ; |mul4x4x|fulladder:add5|co~0  ; out0             ;
+; |mul4x4x|fulladder:add5|co~1  ; |mul4x4x|fulladder:add5|co~1  ; out0             ;
+; |mul4x4x|fulladder:add5|co~2  ; |mul4x4x|fulladder:add5|co~2  ; out0             ;
+; |mul4x4x|fulladder:add5|co~3  ; |mul4x4x|fulladder:add5|co~3  ; out0             ;
+; |mul4x4x|fulladder:add4|s~0   ; |mul4x4x|fulladder:add4|s~0   ; out0             ;
+; |mul4x4x|fulladder:add4|s~1   ; |mul4x4x|fulladder:add4|s~1   ; out0             ;
+; |mul4x4x|fulladder:add4|s~2   ; |mul4x4x|fulladder:add4|s~2   ; out0             ;
+; |mul4x4x|fulladder:add4|s~4   ; |mul4x4x|fulladder:add4|s~4   ; out0             ;
+; |mul4x4x|fulladder:add4|s~5   ; |mul4x4x|fulladder:add4|s~5   ; out0             ;
+; |mul4x4x|fulladder:add4|s~6   ; |mul4x4x|fulladder:add4|s~6   ; out0             ;
+; |mul4x4x|fulladder:add4|s~7   ; |mul4x4x|fulladder:add4|s~7   ; out0             ;
+; |mul4x4x|fulladder:add4|s~8   ; |mul4x4x|fulladder:add4|s~8   ; out0             ;
+; |mul4x4x|fulladder:add4|s~9   ; |mul4x4x|fulladder:add4|s~9   ; out0             ;
+; |mul4x4x|fulladder:add4|s~10  ; |mul4x4x|fulladder:add4|s~10  ; out0             ;
+; |mul4x4x|fulladder:add4|co~0  ; |mul4x4x|fulladder:add4|co~0  ; out0             ;
+; |mul4x4x|fulladder:add4|co~1  ; |mul4x4x|fulladder:add4|co~1  ; out0             ;
+; |mul4x4x|fulladder:add4|co~2  ; |mul4x4x|fulladder:add4|co~2  ; out0             ;
+; |mul4x4x|fulladder:add4|co~3  ; |mul4x4x|fulladder:add4|co~3  ; out0             ;
+; |mul4x4x|fulladder:add3|s~0   ; |mul4x4x|fulladder:add3|s~0   ; out0             ;
+; |mul4x4x|fulladder:add3|s~1   ; |mul4x4x|fulladder:add3|s~1   ; out0             ;
+; |mul4x4x|fulladder:add3|s~2   ; |mul4x4x|fulladder:add3|s~2   ; out0             ;
+; |mul4x4x|fulladder:add3|s~4   ; |mul4x4x|fulladder:add3|s~4   ; out0             ;
+; |mul4x4x|fulladder:add3|s~5   ; |mul4x4x|fulladder:add3|s~5   ; out0             ;
+; |mul4x4x|fulladder:add3|s~6   ; |mul4x4x|fulladder:add3|s~6   ; out0             ;
+; |mul4x4x|fulladder:add3|s~7   ; |mul4x4x|fulladder:add3|s~7   ; out0             ;
+; |mul4x4x|fulladder:add3|s~8   ; |mul4x4x|fulladder:add3|s~8   ; out0             ;
+; |mul4x4x|fulladder:add3|s~9   ; |mul4x4x|fulladder:add3|s~9   ; out0             ;
+; |mul4x4x|fulladder:add3|s~10  ; |mul4x4x|fulladder:add3|s~10  ; out0             ;
+; |mul4x4x|fulladder:add3|co~0  ; |mul4x4x|fulladder:add3|co~0  ; out0             ;
+; |mul4x4x|fulladder:add3|co~1  ; |mul4x4x|fulladder:add3|co~1  ; out0             ;
+; |mul4x4x|fulladder:add3|co~2  ; |mul4x4x|fulladder:add3|co~2  ; out0             ;
+; |mul4x4x|fulladder:add3|co~3  ; |mul4x4x|fulladder:add3|co~3  ; out0             ;
+; |mul4x4x|fulladder:add2|s~0   ; |mul4x4x|fulladder:add2|s~0   ; out0             ;
+; |mul4x4x|fulladder:add2|s~10  ; |mul4x4x|fulladder:add2|s~10  ; out0             ;
+; |mul4x4x|fulladder:add2|co~1  ; |mul4x4x|fulladder:add2|co~1  ; out0             ;
+; |mul4x4x|fulladder:add1|s~0   ; |mul4x4x|fulladder:add1|s~0   ; out0             ;
+; |mul4x4x|fulladder:add1|s~8   ; |mul4x4x|fulladder:add1|s~8   ; out0             ;
+; |mul4x4x|fulladder:add1|s~10  ; |mul4x4x|fulladder:add1|s~10  ; out0             ;
+; |mul4x4x|fulladder:add1|co~1  ; |mul4x4x|fulladder:add1|co~1  ; out0             ;
+; |mul4x4x|fulladder:add1|co~3  ; |mul4x4x|fulladder:add1|co~3  ; out0             ;
+; |mul4x4x|fulladder:add0|s~0   ; |mul4x4x|fulladder:add0|s~0   ; out0             ;
+; |mul4x4x|fulladder:add0|s~8   ; |mul4x4x|fulladder:add0|s~8   ; out0             ;
+; |mul4x4x|fulladder:add0|s~10  ; |mul4x4x|fulladder:add0|s~10  ; out0             ;
+; |mul4x4x|fulladder:add0|co~1  ; |mul4x4x|fulladder:add0|co~1  ; out0             ;
+; |mul4x4x|fulladder:add0|co~3  ; |mul4x4x|fulladder:add0|co~3  ; out0             ;
++-------------------------------+-------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++--------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                       ;
++------------------------------+------------------------------+------------------+
+; Node Name                    ; Output Port Name             ; Output Port Type ;
++------------------------------+------------------------------+------------------+
+; |mul4x4x|reset~3             ; |mul4x4x|reset~3             ; out0             ;
+; |mul4x4x|reset~5             ; |mul4x4x|reset~5             ; out0             ;
+; |mul4x4x|y~7                 ; |mul4x4x|y~7                 ; out0             ;
+; |mul4x4x|y[7]                ; |mul4x4x|y[7]                ; pin_out          ;
+; |mul4x4x|fulladder:add11|s~3 ; |mul4x4x|fulladder:add11|s~3 ; out0             ;
+; |mul4x4x|fulladder:add11|s~8 ; |mul4x4x|fulladder:add11|s~8 ; out0             ;
+; |mul4x4x|fulladder:add11|s~9 ; |mul4x4x|fulladder:add11|s~9 ; out0             ;
+; |mul4x4x|fulladder:add10|s~6 ; |mul4x4x|fulladder:add10|s~6 ; out0             ;
+; |mul4x4x|fulladder:add8|s~3  ; |mul4x4x|fulladder:add8|s~3  ; out0             ;
+; |mul4x4x|fulladder:add8|s~8  ; |mul4x4x|fulladder:add8|s~8  ; out0             ;
+; |mul4x4x|fulladder:add8|s~9  ; |mul4x4x|fulladder:add8|s~9  ; out0             ;
+; |mul4x4x|fulladder:add7|s~3  ; |mul4x4x|fulladder:add7|s~3  ; out0             ;
+; |mul4x4x|fulladder:add7|s~8  ; |mul4x4x|fulladder:add7|s~8  ; out0             ;
+; |mul4x4x|fulladder:add7|s~9  ; |mul4x4x|fulladder:add7|s~9  ; out0             ;
+; |mul4x4x|fulladder:add6|s~3  ; |mul4x4x|fulladder:add6|s~3  ; out0             ;
+; |mul4x4x|fulladder:add6|s~8  ; |mul4x4x|fulladder:add6|s~8  ; out0             ;
+; |mul4x4x|fulladder:add6|s~9  ; |mul4x4x|fulladder:add6|s~9  ; out0             ;
+; |mul4x4x|fulladder:add5|s~3  ; |mul4x4x|fulladder:add5|s~3  ; out0             ;
+; |mul4x4x|fulladder:add5|s~6  ; |mul4x4x|fulladder:add5|s~6  ; out0             ;
+; |mul4x4x|fulladder:add4|s~3  ; |mul4x4x|fulladder:add4|s~3  ; out0             ;
+; |mul4x4x|fulladder:add3|s~3  ; |mul4x4x|fulladder:add3|s~3  ; out0             ;
+; |mul4x4x|fulladder:add2|s~8  ; |mul4x4x|fulladder:add2|s~8  ; out0             ;
+; |mul4x4x|fulladder:add2|co~3 ; |mul4x4x|fulladder:add2|co~3 ; out0             ;
++------------------------------+------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++--------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                       ;
++------------------------------+------------------------------+------------------+
+; Node Name                    ; Output Port Name             ; Output Port Type ;
++------------------------------+------------------------------+------------------+
+; |mul4x4x|reset~3             ; |mul4x4x|reset~3             ; out0             ;
+; |mul4x4x|reset~5             ; |mul4x4x|reset~5             ; out0             ;
+; |mul4x4x|c[15]               ; |mul4x4x|c[15]               ; out0             ;
+; |mul4x4x|y~7                 ; |mul4x4x|y~7                 ; out0             ;
+; |mul4x4x|b[3]                ; |mul4x4x|b[3]                ; out              ;
+; |mul4x4x|y[7]                ; |mul4x4x|y[7]                ; pin_out          ;
+; |mul4x4x|fulladder:add11|s~2 ; |mul4x4x|fulladder:add11|s~2 ; out0             ;
+; |mul4x4x|fulladder:add11|s~3 ; |mul4x4x|fulladder:add11|s~3 ; out0             ;
+; |mul4x4x|fulladder:add11|s~8 ; |mul4x4x|fulladder:add11|s~8 ; out0             ;
+; |mul4x4x|fulladder:add11|s~9 ; |mul4x4x|fulladder:add11|s~9 ; out0             ;
+; |mul4x4x|fulladder:add10|s~6 ; |mul4x4x|fulladder:add10|s~6 ; out0             ;
+; |mul4x4x|fulladder:add8|s~3  ; |mul4x4x|fulladder:add8|s~3  ; out0             ;
+; |mul4x4x|fulladder:add8|s~8  ; |mul4x4x|fulladder:add8|s~8  ; out0             ;
+; |mul4x4x|fulladder:add8|s~9  ; |mul4x4x|fulladder:add8|s~9  ; out0             ;
+; |mul4x4x|fulladder:add7|s~3  ; |mul4x4x|fulladder:add7|s~3  ; out0             ;
+; |mul4x4x|fulladder:add7|s~8  ; |mul4x4x|fulladder:add7|s~8  ; out0             ;
+; |mul4x4x|fulladder:add7|s~9  ; |mul4x4x|fulladder:add7|s~9  ; out0             ;
+; |mul4x4x|fulladder:add6|s~3  ; |mul4x4x|fulladder:add6|s~3  ; out0             ;
+; |mul4x4x|fulladder:add6|s~8  ; |mul4x4x|fulladder:add6|s~8  ; out0             ;
+; |mul4x4x|fulladder:add6|s~9  ; |mul4x4x|fulladder:add6|s~9  ; out0             ;
+; |mul4x4x|fulladder:add5|s~3  ; |mul4x4x|fulladder:add5|s~3  ; out0             ;
+; |mul4x4x|fulladder:add5|s~6  ; |mul4x4x|fulladder:add5|s~6  ; out0             ;
+; |mul4x4x|fulladder:add4|s~3  ; |mul4x4x|fulladder:add4|s~3  ; out0             ;
+; |mul4x4x|fulladder:add3|s~3  ; |mul4x4x|fulladder:add3|s~3  ; out0             ;
+; |mul4x4x|fulladder:add2|s~8  ; |mul4x4x|fulladder:add2|s~8  ; out0             ;
+; |mul4x4x|fulladder:add2|co~3 ; |mul4x4x|fulladder:add2|co~3 ; out0             ;
++------------------------------+------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.0 Build 132 02/25/2009 SJ Web Edition
+    Info: Processing started: Wed Nov 27 14:49:35 2019
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off 7 -c 7
+Info: Using vector source file "C:/Users/cloud/Desktop/USB/7/exe1.vwf"
+Info: Overwriting simulation input file with simulation results
+    Info: A backup of exe1.vwf called 7.sim_ori.vwf has been created in the db folder
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      86.10 %
+Info: Number of transitions in simulation is 1206
+Info: Vector file exe1.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 155 megabytes
+    Info: Processing ended: Wed Nov 27 14:49:35 2019
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
+
+

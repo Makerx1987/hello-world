@@ -1,0 +1,1017 @@
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.exe ..\main.c ROM(LARGE) BROWSE DEBUG CODE OBJECTEXTEND PREPRINT OBJECT(main.OB
+                    -J)
+
+line level    source
+
+   1          #include "reg52.h"
+   2          #include <stdio.h>
+   3          #include <string.h>
+   4          #define uchar unsigned char 
+   5          #define uint unsigned int
+   6          sbit receive=P1^3;
+   7          sbit rs=P2^0;//H数据，L命令
+   8          sbit lcden=P2^2;//高脉冲使能，使能脉宽最小150ns
+   9          sbit rw=P2^1;
+  10          uchar  table[]= "Period     .  ms";
+  11          uchar  table1[]="Radio     .    %";
+  12          uchar  table2[]= "OUT OF RANGE !  ";
+  13          uchar  table3[]= "START RESET ... ";
+  14          uchar code num[]={'0','1','2','3','4','5','6','7','8','9'};
+  15          long count0=0;
+  16          long count1=0;
+  17          long count2=0;
+  18          
+  19          long radio=0;
+  20          long period=0;
+  21          int a;
+  22          //bit flag=0;
+  23          //bit first=0;
+  24          /********************************************************************
+  25          * 名称 : delay(int x)
+  26          * 功能 : 延时函数
+  27          * 输入 : x 
+  28          * 输出 : 无
+  29          ***********************************************************************/
+  30          void delay(int x)
+  31          {       uint y;
+  32   1              for(;x>0;x--)
+  33   1               {                                                                       
+  34   2                      for(y=100;y>0;y--)
+  35   2                                      {};
+  36   2               }
+  37   1      }
+  38          /********************************************************************
+  39          * 名称 : Time0_Init()
+  40          * 功能 : 定时器的初始化，11.0592MZ晶振，0.1ms,921600
+  41          * 输入 : 无
+  42          * 输出 : 无
+  43          ***********************************************************************/
+  44          void Time_Init()
+  45          {
+  46   1         TMOD = 0x19;   //定时器0选用方式1，脉冲触发，定时器1使用方式1，不断计数
+  47   1              TH0  = 0xff;      //初值的计算
+  48   1              TL0  = 0x9a;    
+  49   1              TR0 = 1;                  //启动定时器
+  50   1              ET0 = 1;                  //打开定时器中断允许位
+  51   1              TH1  = 0xff;      //初值的计算
+  52   1              TL1  = 0x9a;    
+  53   1              TR1 = 1;                  //启动定时器
+  54   1              ET1 = 1;                  //打开定时器中断允许位
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 2   
+
+  55   1              count0=0;
+  56   1               count1=0;
+  57   1              count2=0;
+  58   1              EX0 = 1;  //开外部中断0
+  59   1              IT0 = 1;  //负边沿触发
+  60   1      
+  61   1      }
+  62          
+  63          /********************************************************************
+  64          * 名称 : Time_Int()
+  65          * 功能 : 定时器中断，中断中实现 脉冲输出
+  66          * 输入 : 无
+  67          * 输出 : 无
+  68          ***********************************************************************/
+  69          void Time0_Int() interrupt 1
+  70          {
+  71   1              TH0 = 0xff;
+  72   1              TL0 = 0x9a;
+  73   1              count0=count0+1;
+  74   1      }
+  75          void Time1_Int() interrupt 3
+  76          {
+  77   1              TH1 = 0xff;
+  78   1              TL1 = 0x9a;
+  79   1              count1=count1+1;
+  80   1      }
+  81          /********************************************************************
+  82          * 名称 : lcdwrcom(uchar cdat)
+  83          * 功能 : LCD1602写数据到LCD1602
+  84          * 输入 : cdat 
+  85          * 输出 : 无
+  86          ***********************************************************************/
+  87          void lcdwrdata(uchar dat)
+  88          {
+  89   1         // dat = ((dat&0x01)<<7)|((dat&0x02)<<5)|((dat&0x04)<<3)|((dat&0x08)<<1)|((dat&0x10)>>1)|((dat&0x20)>>3
+             -)|((dat&0x40)>>5)|((dat&0x80)>>7);
+  90   1              rs=1;//写数据时RS拉高
+  91   1              lcden=1;
+  92   1              P0=dat;
+  93   1              delay(1);
+  94   1              lcden=0;
+  95   1              delay(1);
+  96   1      }
+  97          /********************************************************************
+  98          * 名称 : lcdwrcom(uchar cdat)
+  99          * 功能 : LCD1602写命令到LCD1602
+ 100          * 输入 : cdat 
+ 101          * 输出 : 无
+ 102          ***********************************************************************/
+ 103          void lcdwrcom(uchar cdat)//写指令数据到LCD  
+ 104          {       
+ 105   1         // cdat = ((cdat&0x01)<<7)|((cdat&0x02)<<5)|((cdat&0x04)<<3)|((cdat&0x08)<<1)|((cdat&0x10)>>1)|((cdat&0
+             -x20)>>3)|((cdat&0x40)>>5)|((cdat&0x80)>>7);
+ 106   1          rs=0;//写指令时RS拉低
+ 107   1              lcden=1;
+ 108   1          P0=cdat;//
+ 109   1              delay(2);//不加此延时将导致不能写入指令，但能写入显示数据
+ 110   1              lcden=0;
+ 111   1              delay(2);
+ 112   1      }
+ 113          /********************************************************************
+ 114          * 名称 : lcd_init()
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 3   
+
+ 115          * 功能 : LCD1602初始化
+ 116          * 输入 : 无
+ 117          * 输出 : 无
+ 118          ***********************************************************************/
+ 119          void lcd_init()
+ 120          {
+ 121   1              lcdwrcom(0x38);//0x38设置显示模式为：16X2 显示,5X7 点阵,8 位数据接口
+ 122   1              lcdwrcom(0x0c);//打开显示光标闪烁
+ 123   1              lcdwrcom(0x06);//
+ 124   1              lcdwrcom(0x01);//
+ 125   1      }
+ 126          /********************************************************************
+ 127          * 名称 : display()
+ 128          * 功能 : LCD显示函数
+ 129          * 输入 : 
+ 130          * 输出 : 无
+ 131          ***********************************************************************/
+ 132          void display()
+ 133          {
+ 134   1               uchar n;
+ 135   1               lcdwrcom(0x00|0x80);
+ 136   1              for(n=0;n<16;n++)
+ 137   1              {
+ 138   2                      lcdwrdata(table[n]);
+ 139   2                      //delay(100);
+ 140   2              }
+ 141   1      
+ 142   1              lcdwrcom(0x40|0x80);
+ 143   1              for(n=0;n<16;n++)
+ 144   1              {
+ 145   2                      lcdwrdata(table1[n]);
+ 146   2                      //delay(100);
+ 147   2              }
+ 148   1         
+ 149   1      }
+ 150          /********************************************************************
+ 151          * 名称 : Outside_Int0()
+ 152          * 功能 : 外部中断0 的中断处理
+ 153          * 输入 : 无
+ 154          * 输出 : 无
+ 155          ***********************************************************************/
+ 156          void Outside_Int0(void) interrupt 0     
+ 157          {
+ 158   1              
+ 159   1              count2++;
+ 160   1              
+ 161   1      }
+ 162          /********************************************************************
+ 163          * 名称 : main()
+ 164          * 功能 : 主函数
+ 165          * 输入 : 无
+ 166          * 输出 : 无
+ 167          ***********************************************************************/
+ 168          void main()
+ 169          {       
+ 170   1              EA=1;
+ 171   1              rw=0;   
+ 172   1              lcden=0;
+ 173   1              lcd_init();
+ 174   1              lcdwrcom(0x00|0x80);
+ 175   1               Time_Init();
+ 176   1               display();
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 4   
+
+ 177   1               //while(receive==1);
+ 178   1              while(1)
+ 179   1              {
+ 180   2                 if(count1>99999999)
+ 181   2                    Time_Init();
+ 182   2                  /*count3++;
+ 183   2                 if(receive==1)
+ 184   2                    {
+ 185   2                       if(flag==0){
+ 186   2                          flag=1;
+ 187   2                          count2++;
+ 188   2                          }
+ 189   2                       TR1=0;
+ 190   2                       TR0=1;          
+ 191   2                    }
+ 192   2                  else
+ 193   2                    {
+ 194   2                     if(flag==1){
+ 195   2                          flag=0;
+ 196   2                          count2++;
+ 197   2                          }
+ 198   2                     TR1=1;
+ 199   2                     TR0=0;
+ 200   2                    }*/
+ 201   2                 if(count2!=0)period=(float)(count1)/(float)(count2)*1.25;   
+ 202   2                 if(period!=0)radio=(float)(count0)/(float)(count1)*10000;
+ 203   2                 if(period>100000)
+ 204   2                 {
+ 205   3                         strcpy(table,table2);
+ 206   3                         strcpy(table1,table3);
+ 207   3                         display();
+ 208   3                         delay(1000);
+ 209   3                         break;
+ 210   3                 }
+ 211   2      
+ 212   2                 a=(period/10000)%10;
+ 213   2                 table[7]=num[a];
+ 214   2                 a=(period/1000)%10;
+ 215   2                 table[8]=num[a];
+ 216   2                 a=(period/100)%10;
+ 217   2                 table[9]=num[a];
+ 218   2                 a=(period/10)%10;
+ 219   2                 table[10]=num[a];
+ 220   2                 table[11]='.';
+ 221   2                 a=(period)%10;
+ 222   2                 table[12]=num[a]; 
+ 223   2      
+ 224   2                 a=(radio/1000)%10;
+ 225   2                 table1[8]=num[a];
+ 226   2                 a=(radio/100)%10;
+ 227   2                 table1[9]=num[a];
+ 228   2                 table1[10]='.';
+ 229   2                 a=(radio/10)%10;
+ 230   2                 table1[11]=num[a];
+ 231   2                 a=(radio)%10;
+ 232   2                 table1[12]=num[a];
+ 233   2      
+ 234   2                 
+ 235   2                  
+ 236   2      
+ 237   2                    
+ 238   2                 display();
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 5   
+
+ 239   2                 //delay(1);
+ 240   2                 
+ 241   2              }
+ 242   1      }
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 6   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION _delay (BEGIN)
+                                           ; SOURCE LINE # 30
+;---- Variable 'x' assigned to Register 'R6/R7' ----
+                                           ; SOURCE LINE # 31
+                                           ; SOURCE LINE # 32
+0000         ?C0001:
+0000 D3                SETB    C
+0001 EF                MOV     A,R7
+0002 9400              SUBB    A,#00H
+0004 EE                MOV     A,R6
+0005 6480              XRL     A,#080H
+0007 9480              SUBB    A,#080H
+0009 4014              JC      ?C0007
+                                           ; SOURCE LINE # 33
+                                           ; SOURCE LINE # 34
+;---- Variable 'y' assigned to Register 'R4/R5' ----
+000B 7D64              MOV     R5,#064H
+000D 7C00              MOV     R4,#00H
+000F         ?C0004:
+                                           ; SOURCE LINE # 35
+000F ED                MOV     A,R5
+0010 1D                DEC     R5
+0011 7001              JNZ     ?C0029
+0013 1C                DEC     R4
+0014         ?C0029:
+0014 ED                MOV     A,R5
+0015 4C                ORL     A,R4
+0016 70F7              JNZ     ?C0004
+                                           ; SOURCE LINE # 36
+0018         ?C0003:
+0018 EF                MOV     A,R7
+0019 1F                DEC     R7
+001A 70E4              JNZ     ?C0001
+001C 1E                DEC     R6
+001D         ?C0030:
+001D 80E1              SJMP    ?C0001
+                                           ; SOURCE LINE # 37
+001F         ?C0007:
+001F 22                RET     
+             ; FUNCTION _delay (END)
+
+             ; FUNCTION Time_Init (BEGIN)
+                                           ; SOURCE LINE # 44
+                                           ; SOURCE LINE # 45
+                                           ; SOURCE LINE # 46
+0000 758919            MOV     TMOD,#019H
+                                           ; SOURCE LINE # 47
+0003 758CFF            MOV     TH0,#0FFH
+                                           ; SOURCE LINE # 48
+0006 758A9A            MOV     TL0,#09AH
+                                           ; SOURCE LINE # 49
+0009 D28C              SETB    TR0
+                                           ; SOURCE LINE # 50
+000B D2A9              SETB    ET0
+                                           ; SOURCE LINE # 51
+000D 758DFF            MOV     TH1,#0FFH
+                                           ; SOURCE LINE # 52
+0010 758B9A            MOV     TL1,#09AH
+                                           ; SOURCE LINE # 53
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 7   
+
+0013 D28E              SETB    TR1
+                                           ; SOURCE LINE # 54
+0015 D2AB              SETB    ET1
+                                           ; SOURCE LINE # 55
+0017 E4                CLR     A
+0018 F500        R     MOV     count0+03H,A
+001A F500        R     MOV     count0+02H,A
+001C F500        R     MOV     count0+01H,A
+001E F500        R     MOV     count0,A
+                                           ; SOURCE LINE # 56
+0020 F500        R     MOV     count1+03H,A
+0022 F500        R     MOV     count1+02H,A
+0024 F500        R     MOV     count1+01H,A
+0026 F500        R     MOV     count1,A
+                                           ; SOURCE LINE # 57
+0028 F500        R     MOV     count2+03H,A
+002A F500        R     MOV     count2+02H,A
+002C F500        R     MOV     count2+01H,A
+002E F500        R     MOV     count2,A
+                                           ; SOURCE LINE # 58
+0030 D2A8              SETB    EX0
+                                           ; SOURCE LINE # 59
+0032 D288              SETB    IT0
+                                           ; SOURCE LINE # 61
+0034 22                RET     
+             ; FUNCTION Time_Init (END)
+
+             ; FUNCTION Time0_Int (BEGIN)
+0000 C0E0              PUSH    ACC
+0002 C0D0              PUSH    PSW
+                                           ; SOURCE LINE # 69
+                                           ; SOURCE LINE # 71
+0004 758CFF            MOV     TH0,#0FFH
+                                           ; SOURCE LINE # 72
+0007 758A9A            MOV     TL0,#09AH
+                                           ; SOURCE LINE # 73
+000A E500        R     MOV     A,count0+03H
+000C 2401              ADD     A,#01H
+000E F500        R     MOV     count0+03H,A
+0010 E4                CLR     A
+0011 3500        R     ADDC    A,count0+02H
+0013 F500        R     MOV     count0+02H,A
+0015 E4                CLR     A
+0016 3500        R     ADDC    A,count0+01H
+0018 F500        R     MOV     count0+01H,A
+001A E4                CLR     A
+001B 3500        R     ADDC    A,count0
+001D F500        R     MOV     count0,A
+                                           ; SOURCE LINE # 74
+001F D0D0              POP     PSW
+0021 D0E0              POP     ACC
+0023 32                RETI    
+             ; FUNCTION Time0_Int (END)
+
+             ; FUNCTION Time1_Int (BEGIN)
+0000 C0E0              PUSH    ACC
+0002 C0D0              PUSH    PSW
+                                           ; SOURCE LINE # 75
+                                           ; SOURCE LINE # 77
+0004 758DFF            MOV     TH1,#0FFH
+                                           ; SOURCE LINE # 78
+0007 758B9A            MOV     TL1,#09AH
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 8   
+
+                                           ; SOURCE LINE # 79
+000A E500        R     MOV     A,count1+03H
+000C 2401              ADD     A,#01H
+000E F500        R     MOV     count1+03H,A
+0010 E4                CLR     A
+0011 3500        R     ADDC    A,count1+02H
+0013 F500        R     MOV     count1+02H,A
+0015 E4                CLR     A
+0016 3500        R     ADDC    A,count1+01H
+0018 F500        R     MOV     count1+01H,A
+001A E4                CLR     A
+001B 3500        R     ADDC    A,count1
+001D F500        R     MOV     count1,A
+                                           ; SOURCE LINE # 80
+001F D0D0              POP     PSW
+0021 D0E0              POP     ACC
+0023 32                RETI    
+             ; FUNCTION Time1_Int (END)
+
+             ; FUNCTION _lcdwrdata (BEGIN)
+                                           ; SOURCE LINE # 87
+;---- Variable 'dat' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 88
+                                           ; SOURCE LINE # 90
+0000 D2A0              SETB    rs
+                                           ; SOURCE LINE # 91
+0002 D2A2              SETB    lcden
+                                           ; SOURCE LINE # 92
+0004 8F80              MOV     P0,R7
+                                           ; SOURCE LINE # 93
+0006 7F01              MOV     R7,#01H
+0008 7E00              MOV     R6,#00H
+000A 120000      R     LCALL   _delay
+                                           ; SOURCE LINE # 94
+000D C2A2              CLR     lcden
+                                           ; SOURCE LINE # 95
+000F 7F01              MOV     R7,#01H
+0011 7E00              MOV     R6,#00H
+0013 020000      R     LJMP    _delay
+             ; FUNCTION _lcdwrdata (END)
+
+             ; FUNCTION _lcdwrcom (BEGIN)
+                                           ; SOURCE LINE # 103
+;---- Variable 'cdat' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 104
+                                           ; SOURCE LINE # 106
+0000 C2A0              CLR     rs
+                                           ; SOURCE LINE # 107
+0002 D2A2              SETB    lcden
+                                           ; SOURCE LINE # 108
+0004 8F80              MOV     P0,R7
+                                           ; SOURCE LINE # 109
+0006 7F02              MOV     R7,#02H
+0008 7E00              MOV     R6,#00H
+000A 120000      R     LCALL   _delay
+                                           ; SOURCE LINE # 110
+000D C2A2              CLR     lcden
+                                           ; SOURCE LINE # 111
+000F 7F02              MOV     R7,#02H
+0011 7E00              MOV     R6,#00H
+0013 020000      R     LJMP    _delay
+             ; FUNCTION _lcdwrcom (END)
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 9   
+
+
+             ; FUNCTION lcd_init (BEGIN)
+                                           ; SOURCE LINE # 119
+                                           ; SOURCE LINE # 120
+                                           ; SOURCE LINE # 121
+0000 7F38              MOV     R7,#038H
+0002 120000      R     LCALL   _lcdwrcom
+                                           ; SOURCE LINE # 122
+0005 7F0C              MOV     R7,#0CH
+0007 120000      R     LCALL   _lcdwrcom
+                                           ; SOURCE LINE # 123
+000A 7F06              MOV     R7,#06H
+000C 120000      R     LCALL   _lcdwrcom
+                                           ; SOURCE LINE # 124
+000F 7F01              MOV     R7,#01H
+0011 020000      R     LJMP    _lcdwrcom
+             ; FUNCTION lcd_init (END)
+
+             ; FUNCTION display (BEGIN)
+                                           ; SOURCE LINE # 132
+                                           ; SOURCE LINE # 133
+                                           ; SOURCE LINE # 135
+0000 7F80              MOV     R7,#080H
+0002 120000      R     LCALL   _lcdwrcom
+                                           ; SOURCE LINE # 136
+;---- Variable 'n' assigned to Register 'R3' ----
+0005 E4                CLR     A
+0006 FB                MOV     R3,A
+0007         ?C0014:
+                                           ; SOURCE LINE # 137
+                                           ; SOURCE LINE # 138
+0007 7400        R     MOV     A,#LOW table
+0009 2B                ADD     A,R3
+000A F8                MOV     R0,A
+000B E6                MOV     A,@R0
+000C FF                MOV     R7,A
+000D 120000      R     LCALL   _lcdwrdata
+                                           ; SOURCE LINE # 140
+0010 0B                INC     R3
+0011 BB10F3            CJNE    R3,#010H,?C0014
+0014         ?C0015:
+                                           ; SOURCE LINE # 142
+0014 7FC0              MOV     R7,#0C0H
+0016 120000      R     LCALL   _lcdwrcom
+                                           ; SOURCE LINE # 143
+0019 E4                CLR     A
+001A FB                MOV     R3,A
+001B         ?C0017:
+                                           ; SOURCE LINE # 144
+                                           ; SOURCE LINE # 145
+001B 7400        R     MOV     A,#LOW table1
+001D 2B                ADD     A,R3
+001E F8                MOV     R0,A
+001F E6                MOV     A,@R0
+0020 FF                MOV     R7,A
+0021 120000      R     LCALL   _lcdwrdata
+                                           ; SOURCE LINE # 147
+0024 0B                INC     R3
+0025 BB10F3            CJNE    R3,#010H,?C0017
+                                           ; SOURCE LINE # 149
+0028         ?C0020:
+0028 22                RET     
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 10  
+
+             ; FUNCTION display (END)
+
+             ; FUNCTION Outside_Int0 (BEGIN)
+0000 C0E0              PUSH    ACC
+0002 C0D0              PUSH    PSW
+0004 75D000            MOV     PSW,#00H
+0007 C000              PUSH    AR0
+0009 C001              PUSH    AR1
+000B C002              PUSH    AR2
+                                           ; SOURCE LINE # 156
+                                           ; SOURCE LINE # 159
+000D E4                CLR     A
+000E FA                MOV     R2,A
+000F F9                MOV     R1,A
+0010 F8                MOV     R0,A
+0011 E500        R     MOV     A,count2+03H
+0013 2401              ADD     A,#01H
+0015 F500        R     MOV     count2+03H,A
+0017 EA                MOV     A,R2
+0018 3500        R     ADDC    A,count2+02H
+001A F500        R     MOV     count2+02H,A
+001C E9                MOV     A,R1
+001D 3500        R     ADDC    A,count2+01H
+001F F500        R     MOV     count2+01H,A
+0021 E8                MOV     A,R0
+0022 3500        R     ADDC    A,count2
+0024 F500        R     MOV     count2,A
+                                           ; SOURCE LINE # 161
+0026 D002              POP     AR2
+0028 D001              POP     AR1
+002A D000              POP     AR0
+002C D0D0              POP     PSW
+002E D0E0              POP     ACC
+0030 32                RETI    
+             ; FUNCTION Outside_Int0 (END)
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 168
+                                           ; SOURCE LINE # 169
+                                           ; SOURCE LINE # 170
+0000 D2AF              SETB    EA
+                                           ; SOURCE LINE # 171
+0002 C2A1              CLR     rw
+                                           ; SOURCE LINE # 172
+0004 C2A2              CLR     lcden
+                                           ; SOURCE LINE # 173
+0006 120000      R     LCALL   lcd_init
+                                           ; SOURCE LINE # 174
+0009 7F80              MOV     R7,#080H
+000B 120000      R     LCALL   _lcdwrcom
+                                           ; SOURCE LINE # 175
+000E 120000      R     LCALL   Time_Init
+                                           ; SOURCE LINE # 176
+0011 020000      R     LJMP    ?C0031
+0014         ?C0022:
+                                           ; SOURCE LINE # 178
+                                           ; SOURCE LINE # 179
+                                           ; SOURCE LINE # 180
+0014 7FFF              MOV     R7,#0FFH
+0016 7EE0              MOV     R6,#0E0H
+0018 7DF5              MOV     R5,#0F5H
+001A 7C05              MOV     R4,#05H
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 11  
+
+001C AB00        R     MOV     R3,count1+03H
+001E AA00        R     MOV     R2,count1+02H
+0020 A900        R     MOV     R1,count1+01H
+0022 A800        R     MOV     R0,count1
+0024 D3                SETB    C
+0025 120000      E     LCALL   ?C?SLCMP
+0028 4003              JC      ?C0024
+                                           ; SOURCE LINE # 181
+002A 120000      R     LCALL   Time_Init
+002D         ?C0024:
+                                           ; SOURCE LINE # 201
+002D AF00        R     MOV     R7,count2+03H
+002F AE00        R     MOV     R6,count2+02H
+0031 AD00        R     MOV     R5,count2+01H
+0033 AC00        R     MOV     R4,count2
+0035 EC                MOV     A,R4
+0036 4D                ORL     A,R5
+0037 4E                ORL     A,R6
+0038 4F                ORL     A,R7
+0039 6038              JZ      ?C0025
+003B EC                MOV     A,R4
+003C 120000      E     LCALL   ?C?FCASTL
+003F C004              PUSH    AR4
+0041 C005              PUSH    AR5
+0043 C006              PUSH    AR6
+0045 C007              PUSH    AR7
+0047 AF00        R     MOV     R7,count1+03H
+0049 AE00        R     MOV     R6,count1+02H
+004B AD00        R     MOV     R5,count1+01H
+004D AC00        R     MOV     R4,count1
+004F EC                MOV     A,R4
+0050 120000      E     LCALL   ?C?FCASTL
+0053 D003              POP     AR3
+0055 D002              POP     AR2
+0057 D001              POP     AR1
+0059 D000              POP     AR0
+005B 120000      E     LCALL   ?C?FPDIV
+005E E4                CLR     A
+005F FB                MOV     R3,A
+0060 FA                MOV     R2,A
+0061 79A0              MOV     R1,#0A0H
+0063 783F              MOV     R0,#03FH
+0065 120000      E     LCALL   ?C?FPMUL
+0068 120000      E     LCALL   ?C?CASTF
+006B 8F00        R     MOV     period+03H,R7
+006D 8E00        R     MOV     period+02H,R6
+006F 8D00        R     MOV     period+01H,R5
+0071 8C00        R     MOV     period,R4
+0073         ?C0025:
+                                           ; SOURCE LINE # 202
+0073 AF00        R     MOV     R7,period+03H
+0075 AE00        R     MOV     R6,period+02H
+0077 AD00        R     MOV     R5,period+01H
+0079 AC00        R     MOV     R4,period
+007B EC                MOV     A,R4
+007C 4D                ORL     A,R5
+007D 4E                ORL     A,R6
+007E 4F                ORL     A,R7
+007F 6041              JZ      ?C0026
+0081 AF00        R     MOV     R7,count1+03H
+0083 AE00        R     MOV     R6,count1+02H
+0085 AD00        R     MOV     R5,count1+01H
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 12  
+
+0087 AC00        R     MOV     R4,count1
+0089 EC                MOV     A,R4
+008A 120000      E     LCALL   ?C?FCASTL
+008D C004              PUSH    AR4
+008F C005              PUSH    AR5
+0091 C006              PUSH    AR6
+0093 C007              PUSH    AR7
+0095 AF00        R     MOV     R7,count0+03H
+0097 AE00        R     MOV     R6,count0+02H
+0099 AD00        R     MOV     R5,count0+01H
+009B AC00        R     MOV     R4,count0
+009D EC                MOV     A,R4
+009E 120000      E     LCALL   ?C?FCASTL
+00A1 D003              POP     AR3
+00A3 D002              POP     AR2
+00A5 D001              POP     AR1
+00A7 D000              POP     AR0
+00A9 120000      E     LCALL   ?C?FPDIV
+00AC 7B00              MOV     R3,#00H
+00AE 7A40              MOV     R2,#040H
+00B0 791C              MOV     R1,#01CH
+00B2 7846              MOV     R0,#046H
+00B4 120000      E     LCALL   ?C?FPMUL
+00B7 120000      E     LCALL   ?C?CASTF
+00BA 8F00        R     MOV     radio+03H,R7
+00BC 8E00        R     MOV     radio+02H,R6
+00BE 8D00        R     MOV     radio+01H,R5
+00C0 8C00        R     MOV     radio,R4
+00C2         ?C0026:
+                                           ; SOURCE LINE # 203
+00C2 7FA0              MOV     R7,#0A0H
+00C4 7E86              MOV     R6,#086H
+00C6 7D01              MOV     R5,#01H
+00C8 7C00              MOV     R4,#00H
+00CA AB00        R     MOV     R3,period+03H
+00CC AA00        R     MOV     R2,period+02H
+00CE A900        R     MOV     R1,period+01H
+00D0 A800        R     MOV     R0,period
+00D2 D3                SETB    C
+00D3 120000      E     LCALL   ?C?SLCMP
+00D6 4028              JC      ?C0027
+                                           ; SOURCE LINE # 204
+                                           ; SOURCE LINE # 205
+00D8 7800        R     MOV     R0,#LOW table
+00DA 7C00        R     MOV     R4,#HIGH table
+00DC 7D00              MOV     R5,#00H
+00DE 7B00              MOV     R3,#00H
+00E0 7A00        R     MOV     R2,#HIGH table2
+00E2 7900        R     MOV     R1,#LOW table2
+00E4 120000      E     LCALL   ?C?STRCPY
+                                           ; SOURCE LINE # 206
+00E7 7800        R     MOV     R0,#LOW table1
+00E9 7C00        R     MOV     R4,#HIGH table1
+00EB 7D00              MOV     R5,#00H
+00ED 7B00              MOV     R3,#00H
+00EF 7A00        R     MOV     R2,#HIGH table3
+00F1 7900        R     MOV     R1,#LOW table3
+00F3 120000      E     LCALL   ?C?STRCPY
+                                           ; SOURCE LINE # 207
+00F6 120000      R     LCALL   display
+                                           ; SOURCE LINE # 208
+00F9 7FE8              MOV     R7,#0E8H
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 13  
+
+00FB 7E03              MOV     R6,#03H
+00FD 020000      R     LJMP    _delay
+                                           ; SOURCE LINE # 209
+                                           ; SOURCE LINE # 210
+0100         ?C0027:
+                                           ; SOURCE LINE # 212
+0100 E4                CLR     A
+0101 7B10              MOV     R3,#010H
+0103 7A27              MOV     R2,#027H
+0105 F9                MOV     R1,A
+0106 F8                MOV     R0,A
+0107 AF00        R     MOV     R7,period+03H
+0109 AE00        R     MOV     R6,period+02H
+010B AD00        R     MOV     R5,period+01H
+010D AC00        R     MOV     R4,period
+010F 120000      E     LCALL   ?C?SLDIV
+0112 E4                CLR     A
+0113 7B0A              MOV     R3,#0AH
+0115 FA                MOV     R2,A
+0116 F9                MOV     R1,A
+0117 F8                MOV     R0,A
+0118 120000      E     LCALL   ?C?SLDIV
+011B AE02              MOV     R6,AR2
+011D AF03              MOV     R7,AR3
+011F 8E00        R     MOV     a,R6
+0121 8F00        R     MOV     a+01H,R7
+                                           ; SOURCE LINE # 213
+0123 7400        R     MOV     A,#LOW num
+0125 2F                ADD     A,R7
+0126 F582              MOV     DPL,A
+0128 7400        R     MOV     A,#HIGH num
+012A 3E                ADDC    A,R6
+012B F583              MOV     DPH,A
+012D E4                CLR     A
+012E 93                MOVC    A,@A+DPTR
+012F F500        R     MOV     table+07H,A
+                                           ; SOURCE LINE # 214
+0131 E4                CLR     A
+0132 7BE8              MOV     R3,#0E8H
+0134 7A03              MOV     R2,#03H
+0136 F9                MOV     R1,A
+0137 F8                MOV     R0,A
+0138 AF00        R     MOV     R7,period+03H
+013A AE00        R     MOV     R6,period+02H
+013C AD00        R     MOV     R5,period+01H
+013E AC00        R     MOV     R4,period
+0140 120000      E     LCALL   ?C?SLDIV
+0143 E4                CLR     A
+0144 7B0A              MOV     R3,#0AH
+0146 FA                MOV     R2,A
+0147 F9                MOV     R1,A
+0148 F8                MOV     R0,A
+0149 120000      E     LCALL   ?C?SLDIV
+014C AE02              MOV     R6,AR2
+014E AF03              MOV     R7,AR3
+0150 8E00        R     MOV     a,R6
+0152 8F00        R     MOV     a+01H,R7
+                                           ; SOURCE LINE # 215
+0154 7400        R     MOV     A,#LOW num
+0156 2F                ADD     A,R7
+0157 F582              MOV     DPL,A
+0159 7400        R     MOV     A,#HIGH num
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 14  
+
+015B 3E                ADDC    A,R6
+015C F583              MOV     DPH,A
+015E E4                CLR     A
+015F 93                MOVC    A,@A+DPTR
+0160 F500        R     MOV     table+08H,A
+                                           ; SOURCE LINE # 216
+0162 E4                CLR     A
+0163 7B64              MOV     R3,#064H
+0165 FA                MOV     R2,A
+0166 F9                MOV     R1,A
+0167 F8                MOV     R0,A
+0168 AF00        R     MOV     R7,period+03H
+016A AE00        R     MOV     R6,period+02H
+016C AD00        R     MOV     R5,period+01H
+016E AC00        R     MOV     R4,period
+0170 120000      E     LCALL   ?C?SLDIV
+0173 E4                CLR     A
+0174 7B0A              MOV     R3,#0AH
+0176 FA                MOV     R2,A
+0177 F9                MOV     R1,A
+0178 F8                MOV     R0,A
+0179 120000      E     LCALL   ?C?SLDIV
+017C AE02              MOV     R6,AR2
+017E AF03              MOV     R7,AR3
+0180 8E00        R     MOV     a,R6
+0182 8F00        R     MOV     a+01H,R7
+                                           ; SOURCE LINE # 217
+0184 7400        R     MOV     A,#LOW num
+0186 2F                ADD     A,R7
+0187 F582              MOV     DPL,A
+0189 7400        R     MOV     A,#HIGH num
+018B 3E                ADDC    A,R6
+018C F583              MOV     DPH,A
+018E E4                CLR     A
+018F 93                MOVC    A,@A+DPTR
+0190 F500        R     MOV     table+09H,A
+                                           ; SOURCE LINE # 218
+0192 E4                CLR     A
+0193 7B0A              MOV     R3,#0AH
+0195 FA                MOV     R2,A
+0196 F9                MOV     R1,A
+0197 F8                MOV     R0,A
+0198 AF00        R     MOV     R7,period+03H
+019A AE00        R     MOV     R6,period+02H
+019C AD00        R     MOV     R5,period+01H
+019E AC00        R     MOV     R4,period
+01A0 120000      E     LCALL   ?C?SLDIV
+01A3 E4                CLR     A
+01A4 7B0A              MOV     R3,#0AH
+01A6 FA                MOV     R2,A
+01A7 F9                MOV     R1,A
+01A8 F8                MOV     R0,A
+01A9 120000      E     LCALL   ?C?SLDIV
+01AC AE02              MOV     R6,AR2
+01AE AF03              MOV     R7,AR3
+01B0 8E00        R     MOV     a,R6
+01B2 8F00        R     MOV     a+01H,R7
+                                           ; SOURCE LINE # 219
+01B4 7400        R     MOV     A,#LOW num
+01B6 2F                ADD     A,R7
+01B7 F582              MOV     DPL,A
+01B9 7400        R     MOV     A,#HIGH num
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 15  
+
+01BB 3E                ADDC    A,R6
+01BC F583              MOV     DPH,A
+01BE E4                CLR     A
+01BF 93                MOVC    A,@A+DPTR
+01C0 F500        R     MOV     table+0AH,A
+                                           ; SOURCE LINE # 220
+01C2 75002E      R     MOV     table+0BH,#02EH
+                                           ; SOURCE LINE # 221
+01C5 E4                CLR     A
+01C6 7B0A              MOV     R3,#0AH
+01C8 FA                MOV     R2,A
+01C9 F9                MOV     R1,A
+01CA F8                MOV     R0,A
+01CB AF00        R     MOV     R7,period+03H
+01CD AE00        R     MOV     R6,period+02H
+01CF AD00        R     MOV     R5,period+01H
+01D1 AC00        R     MOV     R4,period
+01D3 120000      E     LCALL   ?C?SLDIV
+01D6 AE02              MOV     R6,AR2
+01D8 AF03              MOV     R7,AR3
+01DA 8E00        R     MOV     a,R6
+01DC 8F00        R     MOV     a+01H,R7
+                                           ; SOURCE LINE # 222
+01DE 7400        R     MOV     A,#LOW num
+01E0 2F                ADD     A,R7
+01E1 F582              MOV     DPL,A
+01E3 7400        R     MOV     A,#HIGH num
+01E5 3E                ADDC    A,R6
+01E6 F583              MOV     DPH,A
+01E8 E4                CLR     A
+01E9 93                MOVC    A,@A+DPTR
+01EA F500        R     MOV     table+0CH,A
+                                           ; SOURCE LINE # 224
+01EC E4                CLR     A
+01ED 7BE8              MOV     R3,#0E8H
+01EF 7A03              MOV     R2,#03H
+01F1 F9                MOV     R1,A
+01F2 F8                MOV     R0,A
+01F3 AF00        R     MOV     R7,radio+03H
+01F5 AE00        R     MOV     R6,radio+02H
+01F7 AD00        R     MOV     R5,radio+01H
+01F9 AC00        R     MOV     R4,radio
+01FB 120000      E     LCALL   ?C?SLDIV
+01FE E4                CLR     A
+01FF 7B0A              MOV     R3,#0AH
+0201 FA                MOV     R2,A
+0202 F9                MOV     R1,A
+0203 F8                MOV     R0,A
+0204 120000      E     LCALL   ?C?SLDIV
+0207 AE02              MOV     R6,AR2
+0209 AF03              MOV     R7,AR3
+020B 8E00        R     MOV     a,R6
+020D 8F00        R     MOV     a+01H,R7
+                                           ; SOURCE LINE # 225
+020F 7400        R     MOV     A,#LOW num
+0211 2F                ADD     A,R7
+0212 F582              MOV     DPL,A
+0214 7400        R     MOV     A,#HIGH num
+0216 3E                ADDC    A,R6
+0217 F583              MOV     DPH,A
+0219 E4                CLR     A
+021A 93                MOVC    A,@A+DPTR
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 16  
+
+021B F500        R     MOV     table1+08H,A
+                                           ; SOURCE LINE # 226
+021D E4                CLR     A
+021E 7B64              MOV     R3,#064H
+0220 FA                MOV     R2,A
+0221 F9                MOV     R1,A
+0222 F8                MOV     R0,A
+0223 AF00        R     MOV     R7,radio+03H
+0225 AE00        R     MOV     R6,radio+02H
+0227 AD00        R     MOV     R5,radio+01H
+0229 AC00        R     MOV     R4,radio
+022B 120000      E     LCALL   ?C?SLDIV
+022E E4                CLR     A
+022F 7B0A              MOV     R3,#0AH
+0231 FA                MOV     R2,A
+0232 F9                MOV     R1,A
+0233 F8                MOV     R0,A
+0234 120000      E     LCALL   ?C?SLDIV
+0237 AE02              MOV     R6,AR2
+0239 AF03              MOV     R7,AR3
+023B 8E00        R     MOV     a,R6
+023D 8F00        R     MOV     a+01H,R7
+                                           ; SOURCE LINE # 227
+023F 7400        R     MOV     A,#LOW num
+0241 2F                ADD     A,R7
+0242 F582              MOV     DPL,A
+0244 7400        R     MOV     A,#HIGH num
+0246 3E                ADDC    A,R6
+0247 F583              MOV     DPH,A
+0249 E4                CLR     A
+024A 93                MOVC    A,@A+DPTR
+024B F500        R     MOV     table1+09H,A
+                                           ; SOURCE LINE # 228
+024D 75002E      R     MOV     table1+0AH,#02EH
+                                           ; SOURCE LINE # 229
+0250 E4                CLR     A
+0251 7B0A              MOV     R3,#0AH
+0253 FA                MOV     R2,A
+0254 F9                MOV     R1,A
+0255 F8                MOV     R0,A
+0256 AF00        R     MOV     R7,radio+03H
+0258 AE00        R     MOV     R6,radio+02H
+025A AD00        R     MOV     R5,radio+01H
+025C AC00        R     MOV     R4,radio
+025E 120000      E     LCALL   ?C?SLDIV
+0261 E4                CLR     A
+0262 7B0A              MOV     R3,#0AH
+0264 FA                MOV     R2,A
+0265 F9                MOV     R1,A
+0266 F8                MOV     R0,A
+0267 120000      E     LCALL   ?C?SLDIV
+026A AE02              MOV     R6,AR2
+026C AF03              MOV     R7,AR3
+026E 8E00        R     MOV     a,R6
+0270 8F00        R     MOV     a+01H,R7
+                                           ; SOURCE LINE # 230
+0272 7400        R     MOV     A,#LOW num
+0274 2F                ADD     A,R7
+0275 F582              MOV     DPL,A
+0277 7400        R     MOV     A,#HIGH num
+0279 3E                ADDC    A,R6
+027A F583              MOV     DPH,A
+C51 COMPILER V9.00   MAIN                                                                  12/30/2019 19:01:44 PAGE 17  
+
+027C E4                CLR     A
+027D 93                MOVC    A,@A+DPTR
+027E F500        R     MOV     table1+0BH,A
+                                           ; SOURCE LINE # 231
+0280 E4                CLR     A
+0281 7B0A              MOV     R3,#0AH
+0283 FA                MOV     R2,A
+0284 F9                MOV     R1,A
+0285 F8                MOV     R0,A
+0286 AF00        R     MOV     R7,radio+03H
+0288 AE00        R     MOV     R6,radio+02H
+028A AD00        R     MOV     R5,radio+01H
+028C AC00        R     MOV     R4,radio
+028E 120000      E     LCALL   ?C?SLDIV
+0291 AE02              MOV     R6,AR2
+0293 AF03              MOV     R7,AR3
+0295 8E00        R     MOV     a,R6
+0297 8F00        R     MOV     a+01H,R7
+                                           ; SOURCE LINE # 232
+0299 7400        R     MOV     A,#LOW num
+029B 2F                ADD     A,R7
+029C F582              MOV     DPL,A
+029E 7400        R     MOV     A,#HIGH num
+02A0 3E                ADDC    A,R6
+02A1 F583              MOV     DPH,A
+02A3 E4                CLR     A
+02A4 93                MOVC    A,@A+DPTR
+02A5 F500        R     MOV     table1+0CH,A
+                                           ; SOURCE LINE # 238
+02A7         ?C0031:
+02A7 120000      R     LCALL   display
+                                           ; SOURCE LINE # 241
+02AA 020000      R     LJMP    ?C0022
+             ; FUNCTION main (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    996    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     90    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
