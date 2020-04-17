@@ -1,4 +1,4 @@
-# [TheWorldXXXOnline点击有惊吓](https://grdaimap.github.io/TheWorldXXXOnline/index.html)
+# [TheWorldXXXOnline点击有惊吓](./index.html)
 
 ## 嘿！！！hey!!!
 
