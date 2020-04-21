@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textViewId1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="类型一：简单对话框" />
+    
+    <Button 
+        android:id="@+id/buttonId1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="弹出简单对话框"/>
+    
+    <TextView
+        android:id="@+id/textViewId2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="类型二：列表对话框" />
+    
+    <Button 
+        android:id="@+id/buttonId2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="弹出列表对话框"/>
+
+    <TextView
+        android:id="@+id/textViewId3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="类型三：多选对话框" />
+    
+    <Button 
+        android:id="@+id/buttonId3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="弹出对选对话框" />
+
+</LinearLayout>

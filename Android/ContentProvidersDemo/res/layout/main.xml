@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:gravity="center|top">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnAdd1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="添加1" />
+
+        <Button
+            android:id="@+id/btnAdd2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="添加2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnUpdate1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更新1" />
+
+        <Button
+            android:id="@+id/btnUpdate2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更新2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnQuery1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查询1" />
+
+        <Button
+            android:id="@+id/btnQuery2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查询2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnDel1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="删除1" />
+
+        <Button
+            android:id="@+id/btnDel2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="删除2" />
+    </LinearLayout>
+
+</LinearLayout>

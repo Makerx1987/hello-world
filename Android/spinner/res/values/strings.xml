@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, SpinnerActivity!</string>
+    <string name="app_name">Spinner</string>
+    <string-array name="spinner_array">
+        <item >请选择您的家乡</item>
+        <item >Mercury</item>
+        <item >Venus</item>
+        <item >Earth</item>
+        <item >Mars</item>
+        <item >Jupiter</item>
+        <item >Saturn</item>
+        <item >Uranus</item>
+        <item >Neptune</item>
+        
+    </string-array>
+	
+</resources>

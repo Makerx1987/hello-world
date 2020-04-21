@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">H~Hello, Thank You, Thank You Very Much!</string>
+    <string name="app_name">Hello</string>
+    <string name="please_input">number</string>
+    <string name="buttom">test</string>
+
+</resources>

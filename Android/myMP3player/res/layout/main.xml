@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:gravity="center">
+    
+    <TextView 
+      android:id="@+id/myTextView1"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:text="当前未播放"
+	  android:layout_marginBottom="30dp"
+        />
+    
+    <WebView 
+      android:id="@+id/webView1"
+	  android:layout_width="320dp"
+	  android:layout_height="320dp" 
+	  android:layout_marginBottom="10dp"
+	  />
+    
+<!--    <ImageView 
+	  android:id="@+id/myImageView1"
+	  android:layout_width="200dp"
+	  android:layout_height="200dp"
+	  android:src="@drawable/start" 
+	  android:layout_marginBottom="30dp"
+        />-->
+    <LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" 
+        >
+        <Button 
+			  android:id="@+id/myButton1"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:text="上一首" 
+            />
+        <Button 
+			  android:id="@+id/myButton2"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:text="播放" 
+            />
+        
+        <Button 
+			  android:id="@+id/myButton4"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:text="下一首" 
+            />
+        <Button 
+			  android:id="@+id/myButton5"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:text="停止" 
+            />
+        
+    </LinearLayout>
+
+
+</LinearLayout>
