@@ -678,10 +678,10 @@ ARM Macro Assembler    Page 11
               00000000 
               00000000 
 Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=test0
-02\startup_stm32l496xx.d -otest002\startup_stm32l496xx.o -IC:\Users\cloud\Docum
-ents\DeveloperKit_bmp280_shtc1_v001\MDK-ARM\RTE -IC:\Keil\ARM\PACK\ARM\CMSIS\3.
-20.3\CMSIS\Include --predefine="__MICROLIB SETA 1" --list=startup_stm32l496xx.l
-st startup_stm32l496xx.s
+02\startup_stm32l496xx.d -otest002\startup_stm32l496xx.o -ID:\code\GH\hello-wor
+ld\STM32\HAL-Develperkit\2_lcd_tem_hum_pre\MDK-ARM\RTE -IC:\Keil\ARM\PACK\ARM\C
+MSIS\3.20.3\CMSIS\Include --predefine="__MICROLIB SETA 1" --list=startup_stm32l
+496xx.lst startup_stm32l496xx.s
 
 
 

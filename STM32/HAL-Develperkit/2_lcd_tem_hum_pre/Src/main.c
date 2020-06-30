@@ -117,7 +117,7 @@ int main(void)
 			printf("SHT1C:  temperature:%.02f°„C  humidity:%.02f%%\r\n",sht1c_temperature,sht1c_humidity);
 		}
 		sprintf(buf1," %d Pa",bmp280_press);
-		sprintf(buf2," %.02f *C",bmp280_temperature/200.0+sht1c_temperature/2);
+		sprintf(buf2," %.02f *C ",bmp280_temperature/200.0+sht1c_temperature/2);
 		sprintf(buf3," %.02f %%",sht1c_humidity);
 		LCD_ShowString(0, 00, 240, 240, 32, "Thermograph");
 		LCD_ShowString(0, 32, 240, 240, 32, "pressure:");
