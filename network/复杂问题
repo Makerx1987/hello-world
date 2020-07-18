@@ -1,0 +1,93 @@
+R1的配置：
+configure terminal
+interface loopback1
+ip address 1.1.1.1 255.255.255.255
+exit
+interface gei-2/1
+pemode media-copper
+no shutdown
+ip address  30.0.0.2 255.255.255.252
+exit
+router ospf 10
+router-id 1.1.1.1
+area 1
+network 1.1.1.1 0.0.0.0
+network 30.0.0.0 0.0.0.3
+exit
+exit
+exit
+write
+show ip forwarding route
+
+R2的配置：
+configure terminal
+interface loopback1
+ip address 1.1.1.2 255.255.255.255
+exit
+interface gei-2/1
+pemode media-copper
+no shutdown
+ip address  30.0.0.1 255.255.255.252
+exit 
+interface gei-2/2
+no shutdown
+ip address  30.0.1.1 255.255.255.252
+exit
+router ospf 10
+router-id 1.1.1.2
+area 1
+network 30.0.0.0 0.0.0.3
+exit
+area 0
+network 30.0.1.0 0.0.0.3
+network 1.1.1.2 0.0.0.0
+exit
+exit
+exit
+write
+show ip forwarding route
+
+R3的配置：
+configure terminal
+interface loopback1
+ip address 1.1.1.3 255.255.255.255
+exit
+interface gei-2/2
+pemode media-copper
+no shutdown
+ip address  30.0.1.2 255.255.255.252
+exit
+router ospf 10
+router-id 1.1.1.3
+area 0
+network 1.1.1.3 0.0.0.0
+network 30.0.1.0 0.0.0.3
+exit
+exit
+exit
+write
+show ip forwarding route
+
+
+
+添加loopback
+configure terminal
+ip route 1.1.1.2 255.255.255.255 10.10.10.20
+ip route 1.1.1.3 255.255.255.255 20.20.20.20
+exit
+
+configure terminal
+ip route 1.1.1.1 255.255.255.255 10.10.10.10
+ip route 1.1.1.3 255.255.255.255 20.20.20.20
+exit
+
+configure terminal
+ip route 1.1.1.1 255.255.255.255 10.10.10.10
+ip route 1.1.1.2 255.255.255.255 20.20.20.10
+exit
+
+检验流程
+show ip forwarding route
+ping 1.1.1.1
+ping 1.1.1.2
+ping 1.1.1.3

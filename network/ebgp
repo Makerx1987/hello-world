@@ -1,0 +1,32 @@
+R1上的配置如下：
+con t
+interface gei-0/1/0/1
+ip address 30.0.0.1 255.255.255.252
+exit
+router bgp 65000
+neighbor 30.0.0.2 remote-as 65001
+exit
+
+R2上的配置如下：
+con t
+interface gei-0/1/0/1
+ip address 30.0.0.2 255.255.255.252
+exit
+router bgp 65001
+neighbor 30.0.0.1 remote-as 65000
+exit
+interface gei-0/1/0/2
+ip address 30.0.1.2 255.255.255.252
+exit
+router bgp 65001
+neighbor 30.0.1.1 remote-as 65001
+exit
+
+R3上的配置如下：
+con t
+interface gei-0/1/0/2
+ip address 30.0.1.1 255.255.255.252
+exit
+router bgp 65001
+neighbor 30.0.1.2 remote-as 65001
+exit

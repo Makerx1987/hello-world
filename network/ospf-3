@@ -1,0 +1,15 @@
+con t
+interface gei-0/1/0/2
+ip address 30.0.1.1 255.255.255.252
+exit
+interface loopback1
+ip address 1.1.1.3 255.255.255.255
+exit
+router ospf 10
+router-id 1.1.1.3
+area 0
+network 1.1.1.3 0.0.0.0
+network 30.0.1.0 0.0.0.3
+exit
+exit
+

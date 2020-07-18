@@ -1,0 +1,104 @@
+Status codes: *valid, >best;
+   Dest               Gw              Interface           Owner       Pri Met
+ric
+*> 1.1.1.1/32         1.1.1.1         loopback1           Address     0   0  
+   
+*> 1.1.1.2/32         10.10.10.20     gei-0/1/0/1         Static      1   0  
+   
+*> 1.1.1.3/32         20.20.20.20     gei-0/1/0/1         Static      1   0  
+   
+*> 10.10.10.0/24      10.10.10.10     gei-0/1/0/1         Direct      0   0  
+   
+*> 10.10.10.10/32     10.10.10.10     gei-0/1/0/1         Address     0   0  
+   
+*> 20.20.20.20/32     10.10.10.20     gei-0/1/0/1         Static      1   0  
+   
+*> 30.1.0.0/16        30.1.0.1        gei-0/1/0/2         Direct      0   0  
+   
+*> 30.1.0.1/32        30.1.0.1        gei-0/1/0/2         Address     0   0  
+   
+ZXR10(config)#ping 1.1.1.1
+sending 5,100-byte ICMP echo(es) to 1.1.1.1,timeout is 2 second(s).
+!!!!!
+Success rate is 100 percent(5/5),round-trip min/avg/max= 10/10/10 ms.
+[finish]
+ZXR10(config)#ping 1.1.1.2
+sending 5,100-byte ICMP echo(es) to 1.1.1.2,timeout is 2 second(s).
+!!!!!
+Success rate is 100 percent(5/5),round-trip min/avg/max= 1/1/1 ms.
+[finish]
+ZXR10(config)#ping 1.1.1.3
+sending 5,100-byte ICMP echo(es) to 1.1.1.3,timeout is 2 second(s).
+!!!!!
+Success rate is 100 percent(5/5),round-trip min/avg/max= 1/1/1 ms.
+[finish]
+=======================================================================
+Status codes: *valid, >best;
+   Dest               Gw              Interface           Owner       Pri Met
+ric
+*> 1.1.1.1/32         10.10.10.10     gei-0/1/0/1         Static      1   0  
+   
+*> 1.1.1.2/32         1.1.1.2         loopback1           Address     0   0  
+   
+*> 1.1.1.3/32         20.20.20.20     gei-0/1/0/2         Static      1   0  
+   
+*> 10.10.10.0/24      10.10.10.20     gei-0/1/0/1         Direct      0   0  
+   
+*> 10.10.10.20/32     10.10.10.20     gei-0/1/0/1         Address     0   0  
+   
+*> 20.20.20.0/24      20.20.20.10     gei-0/1/0/2         Direct      0   0  
+   
+*> 20.20.20.10/32     20.20.20.10     gei-0/1/0/2         Address     0   0  
+   
+ZXR10#ping 1.1.1.1
+sending 5,100-byte ICMP echo(es) to 1.1.1.1,timeout is 2 second(s).
+!!!!!
+Success rate is 100 percent(5/5),round-trip min/avg/max= 1/1/1 ms.
+[finish]
+ZXR10#ping 1.1.1.2
+sending 5,100-byte ICMP echo(es) to 1.1.1.2,timeout is 2 second(s).
+!!!!!
+Success rate is 100 percent(5/5),round-trip min/avg/max= 10/10/10 ms.
+[finish]
+ZXR10#ping 1.1.1.3
+sending 5,100-byte ICMP echo(es) to 1.1.1.3,timeout is 2 second(s).
+!!!!!
+Success rate is 100 percent(5/5),round-trip min/avg/max= 1/1/1 ms.
+[finish]
+=============================================================================
+Status codes: *valid, >best;
+   Dest               Gw              Interface           Owner       Pri Met
+ric
+*> 1.1.1.1/32         10.10.10.10     gei-0/1/0/2         Static      1   0  
+   
+*> 1.1.1.2/32         20.20.20.10     gei-0/1/0/2         Static      1   0  
+   
+*> 1.1.1.3/32         1.1.1.3         loopback1           Address     0   0  
+   
+*> 10.10.10.0/24      20.20.20.10     gei-0/1/0/2         Static      1   0  
+   
+*> 10.10.10.10/32     20.20.20.10     gei-0/1/0/2         Static      1   0  
+   
+*> 20.20.20.0/24      20.20.20.20     gei-0/1/0/2         Direct      0   0  
+   
+*> 20.20.20.20/32     20.20.20.20     gei-0/1/0/2         Address     0   0  
+   
+*> 30.2.0.0/16        30.2.0.10       gei-0/1/0/1         Direct      0   0  
+   
+*> 30.2.0.10/32       30.2.0.10       gei-0/1/0/1         Address     0   0  
+   
+ZXR10(config)#ping 1.1.1.1
+sending 5,100-byte ICMP echo(es) to 1.1.1.1,timeout is 2 second(s).
+!!!!!
+Success rate is 100 percent(5/5),round-trip min/avg/max= 1/1/1 ms.
+[finish]
+ZXR10(config)#ping 1.1.1.2
+sending 5,100-byte ICMP echo(es) to 1.1.1.2,timeout is 2 second(s).
+!!!!!
+Success rate is 100 percent(5/5),round-trip min/avg/max= 1/1/1 ms.
+[finish]
+ZXR10(config)#ping 1.1.1.3
+sending 5,100-byte ICMP echo(es) to 1.1.1.3,timeout is 2 second(s).
+!!!!!
+Success rate is 100 percent(5/5),round-trip min/avg/max= 1/2/10 ms.
+[finish]
